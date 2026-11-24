@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
 
-<div id="progreso"></div>
+<div id="progreso" aria-hidden="true"></div>
 
 <!-- ================= BARRA SUPERIOR ================= -->
 <div class="topbar">
@@ -34,7 +35,7 @@
       <img src="img/logo.png" alt="Consolación">
       <span><b>Pequeño Cottolengo Don Orione</b>Río Cuarto · Córdoba</span>
     </a>
-    <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="hamb" id="hamb" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
       <li><a href="index.html"><i data-lucide="house"></i>Inicio</a></li>
       <li><a href="quienes-somos.html"><i data-lucide="landmark"></i>Quiénes Somos</a></li>
@@ -48,7 +49,7 @@
 </header>
 <div class="velo" id="velo"></div>
 
-<main>
+<main id="contenido">
 
 <section class="cab-pag">
   <div class="burbuja"></div>
@@ -92,7 +93,7 @@
   <div class="c dos">
     <div class="rv izq">
       <span class="chip"><i><i data-lucide="party-popper"></i></i>Sección especial</span>
-      <h2>Alquilá nuestro salón para <span class="acento" style="background:linear-gradient(90deg,#93D1E1,#fff);-webkit-background-clip:text;background-clip:text">grandes eventos</span></h2>
+      <h2>Alquilá nuestro salón para <span class="acento claro">grandes eventos</span></h2>
       <p style="margin-top:1rem">Un espacio amplio y accesible en un entorno verde y sereno, ideal para celebraciones, encuentros institucionales y jornadas. Con tu evento también colaborás con el sostenimiento de nuestra obra.</p>
       <a href="mailto:cottolengoriocuarto@consolacion.org?subject=Consulta%20alquiler%20de%20sal%C3%B3n" class="btn btn-2"><i data-lucide="calendar-days"></i> Consultar disponibilidad</a>
     </div>

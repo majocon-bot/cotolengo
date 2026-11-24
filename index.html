@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
 
-<div id="progreso"></div>
+<div id="progreso" aria-hidden="true"></div>
 
 <!-- ================= BARRA SUPERIOR ================= -->
 <div class="topbar">
@@ -34,7 +35,7 @@
       <img src="img/logo.png" alt="Consolación">
       <span><b>Pequeño Cottolengo Don Orione</b>Río Cuarto · Córdoba</span>
     </a>
-    <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="hamb" id="hamb" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
       <li><a href="index.html" class="activo" aria-current="page"><i data-lucide="house"></i>Inicio</a></li>
       <li><a href="quienes-somos.html"><i data-lucide="landmark"></i>Quiénes Somos</a></li>
@@ -48,126 +49,69 @@
 </header>
 <div class="velo" id="velo"></div>
 
-<main>
+<main id="contenido">
 
 <!-- ================= BIENVENIDA ================= -->
-<section class="banner unico imagen-limpia" id="inicio" aria-label="Bienvenida">
-  <div class="slide activo sin-capa">
+<section class="banner unico" id="inicio" aria-labelledby="titulo-inicio">
+  <div class="slide activo">
     <div class="fondo" style="background-image:url(img/banner-1.svg)"></div>
     <div class="c">
-      <span class="etq anim"><i data-lucide="sparkles"></i> Más de 50 años en Río Cuarto</span>
-      <h1 class="anim">Un hogar que acoge y consuela en el <em>corazón de Río Cuarto</em>.</h1>
-      <p class="anim">Desde hace más de cinco décadas acompañamos la vida de personas con discapacidad y adultos mayores en situación de vulnerabilidad, brindando atención sociosanitaria profesional, acompañamiento espiritual y un verdadero ambiente de familia.</p>
+      <span class="etq anim"><i data-lucide="sparkles" aria-hidden="true"></i> Desde 1970 en Río Cuarto</span>
+      <h1 class="anim" id="titulo-inicio">Un hogar que acoge y <em>consuela</em>.</h1>
+      <p class="anim">Cuidamos a personas con discapacidad y adultos mayores, las 24 horas, con alma de familia.</p>
       <div class="botones anim">
-        <a href="contacto.html" class="btn btn-2"><i data-lucide="message-circle"></i> Pedí información</a>
-        <a href="quienes-somos.html" class="btn btn-glass">Conocé nuestra obra <i data-lucide="arrow-right"></i></a>
+        <a href="contacto.html" class="btn btn-2"><i data-lucide="message-circle" aria-hidden="true"></i> Pedí información</a>
+        <a href="sumate.html" class="btn btn-glass"><i data-lucide="hand-heart" aria-hidden="true"></i> Colaborá</a>
       </div>
     </div>
   </div>
-  <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#fff" d="M0,60 C240,100 480,10 720,40 C960,70 1200,20 1440,50 L1440,90 L0,90Z"/></svg>
+  <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="#fff" d="M0,60 C240,100 480,10 720,40 C960,70 1200,20 1440,50 L1440,90 L0,90Z"/></svg>
 </section>
 
-<!-- Cifras -->
-<section class="cifras" id="cifras">
-  <div class="c cifras-g">
-    <div class="cifra rv d1"><div class="ico"><i data-lucide="calendar-heart"></i></div><div class="num">+<span class="cont" data-fin="50">0</span> <small>años</small></div><h3>De historia</h3><p>Raíces profundas en la solidaridad de Río Cuarto desde 1970.</p></div>
-    <div class="cifra rv d2"><div class="ico"><i data-lucide="clock"></i></div><div class="num"><span class="cont" data-fin="24">0</span>/<span class="cont" data-fin="365">0</span></div><h3>Cuidado continuo</h3><p>Atención médica, de enfermería y humana las 24 horas, todos los días del año.</p></div>
-    <div class="cifra rv d3"><div class="ico"><i data-lucide="trees"></i></div><div class="num">+<span class="cont" data-fin="1.8" data-dec="1">0</span> <small>ha</small></div><h3>De naturaleza</h3><p>Un predio seguro, arbolado y totalmente accesible para el bienestar integral.</p></div>
-    <div class="cifra rv d4"><div class="ico"><i data-lucide="church"></i></div><div class="num" style="font-size:1.6rem;padding:.4rem 0">Consolación</div><h3>Respaldo congregacional</h3><p>Obra gestionada por las Hermanas de Nuestra Señora de la Consolación.</p></div>
-  </div>
+<!-- ================= CIFRAS ================= -->
+<section class="cifras" aria-label="La obra en cifras">
+  <ul class="c cifras-g mini-cifras">
+    <li class="cifra rv d1"><span class="num">+50 <small>años</small></span><span class="lbl">de historia</span></li>
+    <li class="cifra rv d2"><span class="num">24/365</span><span class="lbl">cuidado continuo</span></li>
+    <li class="cifra rv d3"><span class="num">+1,8 <small>ha</small></span><span class="lbl">de parques</span></li>
+    <li class="cifra rv d4"><span class="num"><i data-lucide="church" aria-hidden="true"></i></span><span class="lbl">Hermanas de la Consolación</span></li>
+  </ul>
 </section>
 
-<!-- ================= QUIÉNES SOMOS (resumen) ================= -->
-<section id="quienes-somos">
-  <div class="c dos">
-    <div class="foto-wrap rv izq">
-      <div class="foto"><img src="img/origen.svg" alt="Historia del Pequeño Cottolengo"></div>
-      <div class="flotante" style="left:-20px;bottom:40px"><div class="ico sm"><i data-lucide="landmark"></i></div><div>Desde 1970<small>Una obra de la comunidad</small></div></div>
-    </div>
-    <div class="rv der">
-      <span class="chip"><i><i data-lucide="landmark"></i></i>Quiénes somos</span>
-      <h2>Más de 50 años <span class="acento">acompañando la vida</span></h2>
-      <p class="lead" style="margin-top:1rem">El Pequeño Cottolengo Don Orione nació en Río Cuarto hacia 1970, impulsado por el <strong>Padre Geniale Silvi</strong> y un grupo de vecinos benefactores. Desde 2001 lo conducen las <strong>Hermanas de Nuestra Señora de la Consolación</strong>.</p>
-      <p>Hoy somos el hogar de personas con discapacidad y adultos mayores en situación de vulnerabilidad, donde la atención profesional y el ambiente de familia van de la mano.</p>
-      <div class="botones" style="margin-top:1.8rem"><a href="quienes-somos.html" class="btn btn-1">Conocé nuestra historia <i data-lucide="arrow-right"></i></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= QUÉ OFRECEMOS ================= -->
-<section class="suave" id="servicios">
+<!-- ================= EXPLORÁ ================= -->
+<section class="explora" aria-labelledby="titulo-explora">
   <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="stethoscope"></i></i>Qué ofrecemos</span>
-      <h2>Atención <span class="acento">integral</span>, todos los días</h2>
-      <p class="lead">Cuidamos a cada persona en todas sus dimensiones: física, psicológica, social y espiritual.</p>
-    </div>
-    <div class="grid g4">
-      <a href="servicios.html" class="tarjeta rv d1"><div class="ico"><i data-lucide="bed-double"></i></div><h3>Cuidado 24/365</h3><p>Residencia asistida con acompañamiento personalizado todos los días del año.</p></a>
-      <a href="servicios.html#servicios" class="tarjeta rv d2"><div class="ico"><i data-lucide="heart-pulse"></i></div><h3>Salud y rehabilitación</h3><p>Médico, enfermería 24 h, kinesiología, terapia ocupacional y nutrición.</p></a>
-      <a href="servicios.html#actividades" class="tarjeta rv d3"><div class="ico"><i data-lucide="palette"></i></div><h3>Talleres y vida comunitaria</h3><p>Arte, huerta, música, memoria, paseos y celebraciones.</p></a>
-      <a href="servicios.html#servicios" class="tarjeta rv d4"><div class="ico"><i data-lucide="cross"></i></div><h3>Acompañamiento espiritual</h3><p>Capilla, celebraciones y respeto por la fe de cada residente.</p></a>
-    </div>
-    <div class="centro-btn rv"><a href="servicios.html" class="btn btn-line">Ver todos los servicios <i data-lucide="arrow-right"></i></a></div>
-  </div>
-</section>
-
-<!-- ================= NUESTRA CASA ================= -->
-<section class="crema" id="instalaciones">
-  <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="trees"></i></i>Nuestra casa</span>
-      <h2>Más de 1,8 hectáreas de <span class="acento">naturaleza</span></h2>
-      <p class="lead">Un predio seguro, arbolado y totalmente accesible, pensado para la tranquilidad y el bienestar.</p>
-    </div>
-    <div class="grid g3">
-      <a href="instalaciones.html" class="taller rv d1" style="color:inherit"><div class="img"><img src="img/parque.svg" alt="Parques y jardines"></div><div class="cuerpo" style="padding-top:1.2rem"><h3>Parques y jardines</h3><p>Senderos accesibles y galerías protegidas para todo el año.</p></div></a>
-      <a href="instalaciones.html" class="taller rv d2" style="color:inherit"><div class="img"><img src="img/hab.svg" alt="Habitaciones adaptadas"></div><div class="cuerpo" style="padding-top:1.2rem"><h3>Habitaciones adaptadas</h3><p>Dormitorios luminosos, climatizados y con baños adaptados.</p></div></a>
-      <a href="instalaciones.html" class="taller rv d3" style="color:inherit"><div class="img"><img src="img/capilla.svg" alt="Capilla"></div><div class="cuerpo" style="padding-top:1.2rem"><h3>Capilla</h3><p>Un espacio de paz y oración en el corazón del predio.</p></div></a>
-    </div>
-    <div class="centro-btn rv"><a href="instalaciones.html" class="btn btn-1"><i data-lucide="circle-play"></i> Recorré nuestra casa</a></div>
+    <h2 class="rv" id="titulo-explora">Conocé <span class="acento">nuestra casa</span></h2>
+    <ul class="mosaico">
+      <li class="rv d1"><a href="quienes-somos.html" class="losa"><img src="img/hermanas.svg" alt=""><span class="txt"><small>Historia y misión</small>Quiénes somos</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>
+      <li class="rv d2"><a href="servicios.html" class="losa"><img src="img/rehab.svg" alt=""><span class="txt"><small>Salud y cuidado 24 h</small>Servicios</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>
+      <li class="rv d3"><a href="servicios.html#actividades" class="losa"><img src="img/taller-arte.svg" alt=""><span class="txt"><small>Arte, huerta, música</small>Talleres</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>
+      <li class="rv d1"><a href="instalaciones.html" class="losa"><img src="img/parque.svg" alt=""><span class="txt"><small>Parques y visita virtual</small>Instalaciones</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>
+      <li class="rv d2"><a href="admisiones.html#admisiones" class="losa"><img src="img/residentes.svg" alt=""><span class="txt"><small>Para familias</small>Solicitud de ingreso</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>
+      <li class="rv d3"><a href="admisiones.html#empleo" class="losa"><img src="img/equipo.svg" alt=""><span class="txt"><small>Empleo y prácticas</small>Trabajá con nosotros</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>
+    </ul>
   </div>
 </section>
 
 <!-- ================= SUMATE ================= -->
-<section class="banda" id="sumate">
-  <i data-lucide="heart" class="ic-fondo" style="font-size:9rem;left:6%;top:15%"></i>
-  <i data-lucide="sparkles" class="ic-fondo" style="font-size:7rem;right:8%;bottom:10%;animation-delay:-4s"></i>
-  <div class="c rv zoom">
-    <h2>Cada gesto <span class="acento" style="background:linear-gradient(90deg,#93D1E1,#fff);-webkit-background-clip:text;background-clip:text">sostiene un hogar</span></h2>
-    <p>Tu aporte, tu tiempo o tu oración se transforman en cuidado, dignidad y consolación para quienes más lo necesitan.</p>
-    <div class="grid g3">
-      <a href="sumate.html#padrinos" class="uso"><i data-lucide="heart"></i><b>Padrino o Madrina</b><p>Un aporte mensual que sostiene el día a día del hogar.</p></a>
-      <a href="sumate.html#empresas" class="uso"><i data-lucide="building-2"></i><b>Empresas</b><p>Acciones de RSE con beneficios fiscales y recibo oficial.</p></a>
-      <a href="sumate.html#voluntariado" class="uso"><i data-lucide="heart-handshake"></i><b>Voluntariado</b><p>Regalá tu tiempo: compañía, talleres, paseos y celebraciones.</p></a>
-    </div>
-    <div class="centro-btn"><a href="sumate.html" class="btn btn-2"><i data-lucide="hand-heart"></i> Quiero colaborar</a></div>
-  </div>
-</section>
-
-<!-- ================= CONTACTO / ADMISIONES ================= -->
-<section id="contacto">
-  <div class="c dos" style="align-items:start">
-    <div class="caja rv izq" style="border:1px solid var(--linea)">
-      <div class="ico" style="margin-bottom:1.2rem"><i data-lucide="door-open"></i></div>
-      <h3 class="grande">¿Buscás un lugar para un familiar?</h3>
-      <p style="color:var(--gris)">La admisión la evalúa nuestro Equipo Técnico Interdisciplinario junto a la Dirección, priorizando la vulnerabilidad social y que podamos dar los apoyos que la persona necesita. Escribinos y te orientamos sin compromiso.</p>
-      <div class="botones" style="margin-top:1.5rem">
-        <a href="contacto.html?motivo=Admisiones" class="btn btn-1"><i data-lucide="send"></i> Consultar por un ingreso</a>
-        <a href="admisiones.html#admisiones" class="btn btn-line">Cómo es el proceso</a>
-      </div>
-    </div>
-    <div class="rv der">
-      <span class="chip"><i><i data-lucide="mail"></i></i>Contacto</span>
-      <h2>Te <span class="acento">esperamos</span></h2>
-      <div class="dato"><div class="ico sm"><i data-lucide="map-pin"></i></div><div><strong>Dirección</strong><span>Padre Silvi 160, Río Cuarto (CP X5800), Córdoba, Argentina</span></div></div>
-      <div class="dato"><div class="ico sm"><i data-lucide="phone"></i></div><div><strong>Teléfono / WhatsApp</strong><a href="tel:+549358XXXXXXX">+54 9 358 XXXXXXX</a></div></div>
-      <div class="dato"><div class="ico sm"><i data-lucide="mail"></i></div><div><strong>Correo general</strong><a href="mailto:cottolengoriocuarto@consolacion.org">cottolengoriocuarto@consolacion.org</a></div></div>
-      <a href="contacto.html" class="btn btn-line" style="margin-top:.5rem"><i data-lucide="map"></i> Ver mapa y formulario</a>
+<section class="banda compacta" aria-labelledby="titulo-sumate">
+  <div class="c rv">
+    <h2 id="titulo-sumate">Cada gesto <span class="acento claro">sostiene un hogar</span></h2>
+    <div class="botones" style="justify-content:center">
+      <a href="sumate.html#padrinos" class="btn btn-2"><i data-lucide="heart" aria-hidden="true"></i> Hacete Padrino o Madrina</a>
+      <a href="sumate.html#voluntariado" class="btn btn-glass"><i data-lucide="heart-handshake" aria-hidden="true"></i> Sé voluntario/a</a>
     </div>
   </div>
 </section>
 
+<!-- ================= CONTACTO RÁPIDO ================= -->
+<section class="rapido" aria-label="Contacto rápido">
+  <ul class="c rapido-g">
+    <li><a href="tel:+549358XXXXXXX" class="dato"><span class="ico sm" aria-hidden="true"><i data-lucide="phone"></i></span><span><strong>Llamanos</strong>+54 9 358 XXXXXXX</span></a></li>
+    <li><a href="https://wa.me/549358XXXXXXX" target="_blank" rel="noopener" class="dato"><span class="ico sm" aria-hidden="true"><i data-lucide="message-circle"></i></span><span><strong>WhatsApp</strong>Escribinos<span class="sr"> (se abre en una ventana nueva)</span></span></a></li>
+    <li><a href="contacto.html" class="dato"><span class="ico sm" aria-hidden="true"><i data-lucide="map-pin"></i></span><span><strong>Visitanos</strong>Padre Silvi 160, Río Cuarto</span></a></li>
+  </ul>
+</section>
 
 </main>
 
