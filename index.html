@@ -10,426 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-/* =========================================================
-   PALETA (colores del logo) Y BASE
-   ========================================================= */
-:root{
-  --azul:#005C99; --azul-osc:#00446F; --noche:#06223A; --medio:#2E8FCB;
-  --celeste:#93D1E1; --celeste-2:#C9EAF2; --hielo:#EEF8FB; --crema:#FBF9F5; --oro:#C9A35B;
-  --texto:#1B2A38; --gris:#5E6E7D; --linea:#E3EDF2;
-  --grad:linear-gradient(135deg,#005C99 0%,#2E8FCB 55%,#93D1E1 100%);
-  --grad-osc:linear-gradient(135deg,#06223A 0%,#005C99 100%);
-  --r:20px; --sombra:0 12px 40px -12px rgba(0,68,111,.22); --sombra-2:0 30px 60px -20px rgba(0,68,111,.35);
-  --sans:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --ease:cubic-bezier(.2,.75,.2,1);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:hidden}
-body{font-family:var(--sans);color:var(--texto);background:#fff;line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:var(--azul);text-decoration:none;transition:color .3s}
-a:hover{color:var(--azul-osc)}
-.c{width:min(1200px,92%);margin-inline:auto}
-h1,h2,h3,h4{line-height:1.15;color:var(--noche);font-weight:800;letter-spacing:-.02em}
-h2{font-size:clamp(2rem,4.2vw,3.1rem);margin-bottom:.5rem}
-h3{font-size:1.18rem;font-weight:700;margin-bottom:.4rem}
-.acento{font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
-p+p{margin-top:1em}
-section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
-.suave{background:var(--hielo)}.crema{background:var(--crema)}
-[data-lucide]{width:1em;height:1em;stroke-width:1.8}
-
-/* Etiquetas y títulos */
-.chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .95rem .4rem .5rem;border-radius:50px;background:#fff;border:1px solid var(--linea);color:var(--azul);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem;box-shadow:0 4px 14px -6px rgba(0,92,153,.25)}
-.chip i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--grad);color:#fff;font-size:.85rem}
-.suave .chip{background:#fff}
-.cab-sec{max-width:760px;margin-bottom:3rem}
-.cab-sec.centro{text-align:center;margin-inline:auto}
-.lead{font-size:1.1rem;color:var(--gris)}
-
-/* Botones */
-.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border-radius:60px;font-weight:700;font-size:.95rem;border:0;cursor:pointer;font-family:var(--sans);transition:transform .35s var(--ease),box-shadow .35s,background .35s,color .35s;position:relative;overflow:hidden;isolation:isolate}
-.btn [data-lucide]{width:1.15em;height:1.15em;transition:transform .35s var(--ease)}
-.btn:hover [data-lucide]{transform:translateX(4px)}
-.btn-1{background:var(--grad);background-size:200% 200%;color:#fff;box-shadow:0 10px 25px -8px rgba(0,92,153,.6)}
-.btn-1:hover{color:#fff;transform:translateY(-3px);box-shadow:0 18px 35px -10px rgba(0,92,153,.7);background-position:100% 0}
-.btn-2{background:#fff;color:var(--azul);box-shadow:0 10px 25px -10px rgba(0,0,0,.3)}
-.btn-2:hover{transform:translateY(-3px);color:var(--azul-osc)}
-.btn-glass{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(8px)}
-.btn-glass:hover{background:#fff;color:var(--azul);transform:translateY(-3px)}
-.btn-line{background:transparent;color:var(--azul);box-shadow:inset 0 0 0 2px var(--azul)}
-.btn-line:hover{background:var(--azul);color:#fff;transform:translateY(-3px)}
-.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s;z-index:-1}
-.btn:hover::after{transform:translateX(120%)}
-.botones{display:flex;flex-wrap:wrap;gap:.8rem}
-
-/* Iconos en mosaico */
-.ico{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:1.6rem;color:#fff;background:var(--grad);box-shadow:0 12px 24px -10px rgba(0,92,153,.6);flex:none;transition:transform .5s var(--ease)}
-.ico.claro{background:var(--hielo);color:var(--azul);box-shadow:none}
-.ico.sm{width:46px;height:46px;border-radius:14px;font-size:1.25rem}
-
-/* =========================================================
-   PRELOADER + BARRA DE PROGRESO
-   ========================================================= */
-#preloader{position:fixed;inset:0;background:#fff;z-index:9999;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
-#preloader img{width:220px;animation:latido 1.4s ease-in-out infinite}
-#preloader.fuera{opacity:0;visibility:hidden}
-@keyframes latido{50%{transform:scale(1.06);opacity:.7}}
-#progreso{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:300;transition:width .1s linear}
-
-/* =========================================================
-   CABECERA
-   ========================================================= */
-.topbar{background:var(--noche);color:#bcd3e2;font-size:.82rem}
-.topbar .c{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;flex-wrap:wrap}
-.topbar span,.topbar a{display:inline-flex;align-items:center;gap:.4rem;color:#bcd3e2}
-.topbar a:hover{color:#fff}
-.topbar .der{display:flex;gap:1.3rem}
-header.cab{position:sticky;top:0;z-index:200;background:#fff;transition:box-shadow .4s}
-header.cab.scrolled{box-shadow:0 10px 30px -12px rgba(0,40,70,.25)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;transition:padding .4s}
-.scrolled .nav{padding:.45rem 0}
-.marca{display:flex;align-items:center;gap:.9rem}
-.marca img{height:46px;width:auto;transition:height .4s}
-.scrolled .marca img{height:38px}
-.marca span{font-size:.8rem;line-height:1.25;color:var(--gris);border-left:2px solid var(--celeste-2);padding-left:.9rem;font-weight:600}
-.marca b{display:block;color:var(--noche);font-size:.95rem}
-.menu{display:flex;list-style:none;align-items:center;gap:.15rem}
-.menu a{display:flex;align-items:center;gap:.45rem;padding:.55rem .7rem;font-size:.87rem;font-weight:600;color:var(--texto);border-radius:40px;white-space:nowrap;transition:background .3s,color .3s}
-.menu a [data-lucide]{display:none}
-.menu a:hover{background:var(--hielo);color:var(--azul)}
-.menu a.activo{color:var(--azul);background:var(--hielo)}
-.menu .btn{padding:.65rem 1.25rem;color:#fff;margin-left:.4rem}
-.menu .btn [data-lucide]{display:block}
-.hamb{display:none;background:var(--hielo);border:0;border-radius:12px;cursor:pointer;width:46px;height:46px;position:relative;z-index:260}
-.hamb span{position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:var(--azul);transition:.35s var(--ease)}
-.hamb span:nth-child(1){top:16px}.hamb span:nth-child(2){top:22px}.hamb span:nth-child(3){top:28px}
-.hamb.abierto span:nth-child(1){top:22px;transform:rotate(45deg)}
-.hamb.abierto span:nth-child(2){opacity:0;transform:translateX(-10px)}
-.hamb.abierto span:nth-child(3){top:22px;transform:rotate(-45deg)}
-.velo{position:fixed;inset:0;background:rgba(6,34,58,.45);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.4s;z-index:240}
-.velo.ver{opacity:1;visibility:visible}
-
-/* =========================================================
-   BANNER DESLIZANTE (INICIO)
-   ========================================================= */
-.banner{position:relative;height:min(92vh,860px);min-height:600px;overflow:hidden;background:var(--noche);padding:0}
-.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 1.2s}
-.slide.activo{opacity:1;visibility:visible}
-.slide .fondo{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.15)}
-.slide.activo .fondo{animation:kenburns 9s ease-out forwards}
-.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,34,58,.93) 0%,rgba(0,68,111,.78) 45%,rgba(0,92,153,.2) 100%)}
-.slide .c{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-bottom:4rem}
-.slide .etq{display:inline-flex;align-self:flex-start;align-items:center;gap:.55rem;color:var(--celeste);font-weight:700;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem;padding:.45rem 1rem;border:1px solid rgba(147,209,225,.4);border-radius:40px;background:rgba(147,209,225,.08);backdrop-filter:blur(6px)}
-.slide h1,.slide .h1{color:#fff;font-size:clamp(2.4rem,5.6vw,4.6rem);max-width:820px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
-.slide h1 em,.slide .h1 em{font-family:var(--serif);font-weight:600;font-style:italic;color:var(--celeste);letter-spacing:0}
-.slide p{color:#d8ebf4;font-size:clamp(1rem,1.5vw,1.18rem);max-width:640px;margin:1.4rem 0 2.2rem}
-.slide .anim{opacity:0;transform:translateY(40px)}
-.slide.activo .anim{animation:subir 1s var(--ease) forwards}
-.slide.activo .anim:nth-child(2){animation-delay:.15s}.slide.activo .anim:nth-child(3){animation-delay:.3s}.slide.activo .anim:nth-child(4){animation-delay:.45s}
-.slide.sin-capa::after{display:none}
-.slide.sin-capa h1,.slide.sin-capa .h1,.slide.sin-capa p{text-shadow:0 2px 14px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.45)}
-.slide.sin-capa .etq{background:rgba(6,34,58,.45);color:#fff;border-color:rgba(255,255,255,.5)}
-.slide.sin-capa h1 em,.slide.sin-capa .h1 em{color:#fff}
-.slide.sin-capa p{font-weight:500}
-.burbuja{transition:opacity 1s}
-.banner.imagen-limpia .burbuja{opacity:0}
-@keyframes kenburns{from{transform:scale(1.15)}to{transform:scale(1.02)}}
-@keyframes subir{to{opacity:1;transform:none}}
-.ban-ctrl{position:absolute;z-index:5;bottom:6.5rem;left:0;right:0}
-.ban-ctrl .c{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.puntos{display:flex;gap:.6rem}
-.punto{width:46px;height:5px;border-radius:5px;background:rgba(255,255,255,.3);border:0;cursor:pointer;overflow:hidden;position:relative}
-.punto span{position:absolute;inset:0;width:0;background:#fff;border-radius:5px}
-.punto.activo span{animation:llenar 7s linear forwards}
-.banner.pausa .punto.activo span{animation-play-state:paused}
-@keyframes llenar{to{width:100%}}
-.flechas{display:flex;gap:.6rem}
-.flecha{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.3rem;backdrop-filter:blur(6px);transition:.3s}
-.flecha:hover{background:#fff;color:var(--azul)}
-.ola{position:absolute;bottom:-1px;left:0;width:100%;height:90px;z-index:4}
-.burbuja{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(147,209,225,.45),transparent 70%);z-index:1;animation:flotar 14s ease-in-out infinite;pointer-events:none}
-@keyframes flotar{50%{transform:translate(40px,-40px) scale(1.1)}}
-
-/* =========================================================
-   CIFRAS
-   ========================================================= */
-.cifras{padding:0;margin-top:-5rem;position:relative;z-index:10}
-.cifras-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.cifra{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);border-radius:var(--r);padding:1.8rem 1.5rem;box-shadow:var(--sombra-2);transition:transform .5s var(--ease)}
-.cifra:hover{transform:translateY(-8px)}
-.cifra:hover .ico{transform:rotate(-8deg) scale(1.08)}
-.cifra .num{font-size:2.5rem;font-weight:800;color:var(--noche);line-height:1;margin:1.1rem 0 .3rem;letter-spacing:-.03em}
-.cifra .num small{font-size:1.2rem;color:var(--azul)}
-.cifra h3{font-size:1rem;color:var(--azul);margin-bottom:.3rem}
-.cifra p{font-size:.88rem;color:var(--gris);line-height:1.5}
-
-/* =========================================================
-   CINTA DE VALORES (marquee)
-   ========================================================= */
-.cinta{padding:2.2rem 0;overflow:hidden;background:#fff}
-.cinta-pista{display:flex;width:max-content;animation:desfile 38s linear infinite}
-.cinta:hover .cinta-pista{animation-play-state:paused}
-.cinta-pista span{display:inline-flex;align-items:center;gap:.9rem;padding:0 2rem;font-size:clamp(1.4rem,2.6vw,2.1rem);font-weight:800;color:var(--celeste-2);letter-spacing:-.02em;white-space:nowrap}
-.cinta-pista span:nth-child(odd){color:var(--azul)}
-.cinta-pista span em{font-family:var(--serif);font-weight:600}
-.cinta-pista [data-lucide]{color:var(--celeste)}
-@keyframes desfile{to{transform:translateX(-50%)}}
-
-/* =========================================================
-   LAYOUTS Y TARJETAS
-   ========================================================= */
-.dos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5.5rem);align-items:center}
-.grid{display:grid;gap:1.4rem}
-.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
-.foto{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--sombra-2)}
-.foto img{width:100%;aspect-ratio:4/3.2;object-fit:cover;transition:transform 1.2s var(--ease)}
-.foto:hover img{transform:scale(1.06)}
-.foto-wrap{position:relative}
-.foto-wrap::before{content:"";position:absolute;width:70%;height:70%;right:-28px;bottom:-28px;border-radius:28px;background:var(--grad);opacity:.18;z-index:-1}
-.foto-wrap::after{content:"";position:absolute;width:120px;height:120px;left:-30px;top:-30px;background:radial-gradient(var(--celeste) 2px,transparent 2.5px) 0 0/16px 16px;z-index:-1;opacity:.8}
-.flotante{position:absolute;display:flex;align-items:center;gap:.8rem;background:#fff;border-radius:16px;padding:.8rem 1.1rem;box-shadow:var(--sombra-2);font-size:.85rem;font-weight:700;color:var(--noche);line-height:1.3;animation:balanceo 5s ease-in-out infinite}
-.flotante small{display:block;font-weight:500;color:var(--gris)}
-.flotante.b{animation-delay:-2.5s}
-@keyframes balanceo{50%{transform:translateY(-10px)}}
-
-.tarjeta{background:#fff;border-radius:var(--r);padding:2rem;border:1px solid var(--linea);transition:transform .5s var(--ease),box-shadow .5s,border-color .5s;position:relative;overflow:hidden}
-.tarjeta::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
-.tarjeta:hover{transform:translateY(-8px);box-shadow:var(--sombra-2);border-color:transparent}
-.tarjeta:hover::before{transform:scaleX(1)}
-.tarjeta:hover .ico{transform:rotate(-8deg) scale(1.08)}
-.tarjeta .ico{margin-bottom:1.3rem}
-.tarjeta p{color:var(--gris);font-size:.95rem}
-
-/* Línea de tiempo */
-.tiempo{position:relative;margin-top:2rem;padding-left:2.2rem}
-.tiempo::before{content:"";position:absolute;left:.62rem;top:.4rem;bottom:.4rem;width:2px;background:linear-gradient(var(--azul),var(--celeste))}
-.hito{position:relative;margin-bottom:1.6rem}
-.hito::before{content:"";position:absolute;left:-2.2rem;top:.25rem;width:1.3rem;height:1.3rem;border-radius:50%;background:#fff;border:4px solid var(--azul);box-shadow:0 0 0 5px var(--hielo)}
-.hito b{display:inline-block;font-size:.8rem;font-weight:800;color:#fff;background:var(--grad);padding:.15rem .7rem;border-radius:20px;margin-bottom:.3rem}
-.hito p{color:var(--gris);font-size:.95rem}
-.hito strong{color:var(--noche)}
-
-/* Cita parallax */
-.cita-par{background:linear-gradient(rgba(6,34,58,.88),rgba(0,68,111,.9)),url(img/banner-2.svg) center/cover fixed;color:#fff;text-align:center}
-.cita-par blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.35;max-width:950px;margin:0 auto}
-.cita-par .comillas{font-size:3.5rem;color:var(--celeste);margin-bottom:.5rem;display:inline-block}
-.cita-par cite{display:block;font-style:normal;font-family:var(--sans);font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;color:var(--celeste);margin-top:1.5rem}
-
-/* Misión / visión */
-.mv{background:var(--grad-osc);color:#cfe4f0;border:0}
-.mv h3{color:#fff;font-size:1.6rem}
-.mv p{color:#cfe4f0;font-size:1rem}
-.mv .ico{background:rgba(255,255,255,.12);color:var(--celeste);box-shadow:none;border:1px solid rgba(255,255,255,.15)}
-.mv .marca-agua{position:absolute;right:-20px;bottom:-30px;font-size:10rem;color:rgba(255,255,255,.05)}
-.valor{text-align:center}
-.valor .ico{margin:0 auto 1.3rem;width:74px;height:74px;border-radius:50%;font-size:1.9rem}
-
-/* Lista con iconos */
-.lista{list-style:none;display:grid;gap:1rem;margin-top:1.5rem}
-.lista li{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.2rem;border-radius:16px;background:#fff;border:1px solid var(--linea);transition:transform .4s var(--ease),box-shadow .4s}
-.lista li:hover{transform:translateX(6px);box-shadow:var(--sombra)}
-.lista strong{display:block;color:var(--noche)}
-.lista span{color:var(--gris);font-size:.94rem}
-
-/* Servicios (relleno al pasar) */
-.serv{z-index:0}
-.serv::after{content:"";position:absolute;inset:0;background:var(--grad-osc);opacity:0;transition:opacity .5s;z-index:-1}
-.serv:hover::after{opacity:1}
-.serv:hover h3,.serv:hover p{color:#fff}
-.serv:hover .ico{background:#fff;color:var(--azul)}
-.serv .n{position:absolute;right:1.4rem;top:1rem;font-size:3.6rem;font-weight:800;color:var(--hielo);line-height:1;transition:color .5s}
-.serv:hover .n{color:rgba(255,255,255,.08)}
-.dims{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
-.dims span{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1.1rem;border-radius:40px;background:#fff;border:1px solid var(--linea);color:var(--azul);font-weight:700;font-size:.88rem}
-
-/* Talleres */
-.taller{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--linea);transition:transform .5s var(--ease),box-shadow .5s}
-.taller:hover{transform:translateY(-10px);box-shadow:var(--sombra-2)}
-.taller .img{position:relative;overflow:hidden}
-.taller img{aspect-ratio:4/3;width:100%;object-fit:cover;transition:transform 1s var(--ease)}
-.taller:hover img{transform:scale(1.1)}
-.taller .ico{position:relative;margin:-48px 0 .9rem;border:4px solid #fff;box-sizing:content-box}
-.taller .cuerpo{padding:0 1.4rem 1.6rem;position:relative}
-.taller p{font-size:.92rem;color:var(--gris)}
-.subt{display:flex;align-items:center;gap:1rem;font-size:1.35rem;margin:4rem 0 1.6rem}
-.subt::after{content:"";flex:1;height:1px;background:var(--linea)}
-.mini{display:flex;gap:1rem;align-items:flex-start}
-.mini p{font-size:.93rem}
-
-/* Visita virtual */
-.visor{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:16/8;box-shadow:var(--sombra-2);background:var(--noche);margin-bottom:3rem}
-.visor img{width:100%;height:100%;object-fit:cover;opacity:.5;transition:transform 1.5s var(--ease)}
-.visor:hover img{transform:scale(1.05)}
-.visor .capa{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;gap:1rem;padding:1.5rem;background:radial-gradient(circle,rgba(0,68,111,.2),rgba(6,34,58,.75))}
-.visor h3{color:#fff;font-size:clamp(1.3rem,3vw,2.2rem);font-weight:800}
-.visor p{color:#d6eaf3;max-width:620px;font-size:.95rem}
-.play{width:96px;height:96px;border-radius:50%;border:0;background:#fff;color:var(--azul);cursor:pointer;display:grid;place-items:center;font-size:2rem;position:relative;transition:transform .4s var(--ease)}
-.play:hover{transform:scale(1.1)}
-.play::before,.play::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:onda 2.4s infinite}
-.play::after{animation-delay:1.2s}
-@keyframes onda{to{transform:scale(1.8);opacity:0}}
-.est{display:flex;gap:1.1rem;align-items:flex-start}
-.est h3{font-size:1.05rem}
-
-/* Pestañas */
-.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:2.5rem;background:#fff;padding:.5rem;border-radius:60px;width:max-content;max-width:100%;margin-inline:auto;box-shadow:var(--sombra)}
-.tab{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.3rem;border-radius:50px;border:0;background:transparent;color:var(--gris);font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.92rem;transition:.35s}
-.tab:hover{color:var(--azul)}
-.tab.activa{background:var(--grad);color:#fff;box-shadow:0 8px 20px -8px rgba(0,92,153,.6)}
-.panel{display:none}
-.panel.activo{display:block;animation:entrar .7s var(--ease)}
-@keyframes entrar{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
-.caja{background:#fff;border-radius:28px;padding:clamp(1.6rem,4vw,3rem);box-shadow:var(--sombra)}
-.caja h3.grande{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:1rem}
-.pasos{list-style:none;counter-reset:p;display:grid;gap:.9rem;margin:1.2rem 0}
-.pasos li{counter-increment:p;display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.2rem;border-radius:16px;background:var(--hielo)}
-.pasos li::before{content:counter(p);flex:none;width:2.3rem;height:2.3rem;border-radius:12px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800}
-.pasos strong{color:var(--noche)}
-.contacto{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;padding:1rem 1.2rem;border-radius:16px;border:1.5px dashed var(--celeste);background:#FBFEFF;font-size:.95rem}
-.contacto .ico{width:42px;height:42px;border-radius:12px;font-size:1.1rem}
-.aviso{display:flex;gap:1rem;background:#FFF8EA;border:1px solid #F1E0BC;padding:1.1rem 1.3rem;border-radius:16px;margin:1.5rem 0;font-size:.94rem}
-.aviso [data-lucide]{color:var(--oro);font-size:1.4rem;flex:none;margin-top:.1rem}
-.alias{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;background:var(--grad-osc);color:#fff;border-radius:20px;padding:1.4rem 1.8rem;margin:2rem 0;position:relative;overflow:hidden}
-.alias::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(147,209,225,.15);right:-50px;top:-80px}
-.alias small{display:flex;align-items:center;gap:.4rem;letter-spacing:.18em;text-transform:uppercase;font-size:.75rem;color:var(--celeste);font-weight:700}
-.alias strong{font-size:clamp(1.3rem,3vw,1.9rem);letter-spacing:.05em;font-weight:800}
-.alias .btn{z-index:1}
-.fiscal{background:var(--hielo);border-radius:20px;padding:1.8rem;margin-top:1.8rem}
-.fiscal h4{display:flex;align-items:center;gap:.6rem;font-size:1.15rem;margin-bottom:1rem}
-.compromiso{text-align:center;padding:1.6rem 1.2rem}
-.compromiso .ico{margin:0 auto 1rem}
-.compromiso h3{font-size:1rem}
-.compromiso p{font-size:.88rem}
-
-/* Banda CTA */
-.banda{background:linear-gradient(-45deg,#06223A,#005C99,#2E8FCB,#00446F);background-size:400% 400%;animation:degradado 14s ease infinite;color:#fff;text-align:center;overflow:hidden}
-.banda h2{color:#fff}
-.banda p{color:#d6eaf3;max-width:640px;margin:0 auto 2rem;font-size:1.1rem}
-.banda .ic-fondo{position:absolute;color:rgba(255,255,255,.07);animation:flotar 12s ease-in-out infinite}
-@keyframes degradado{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
-
-/* Trabajá */
-.op{display:flex;flex-direction:column}
-.op .contacto{margin-top:auto;flex-wrap:nowrap;font-size:.84rem}
-.op p{margin-bottom:1.2rem}
-
-/* Formularios */
-form{display:grid;gap:1rem}
-.fila{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-label{font-size:.85rem;font-weight:700;color:var(--noche);display:block;margin-bottom:.35rem}
-.campo{position:relative}
-.campo [data-lucide]{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--gris);font-size:1.1rem;pointer-events:none}
-.campo input,.campo select{padding-left:2.8rem}
-input,select,textarea{width:100%;padding:.9rem 1rem;border:1.5px solid var(--linea);border-radius:14px;font:inherit;font-size:.95rem;background:#fff;transition:border-color .3s,box-shadow .3s;color:var(--texto)}
-input:focus,select:focus,textarea:focus{outline:0;border-color:var(--azul);box-shadow:0 0 0 5px rgba(147,209,225,.35)}
-textarea{min-height:130px;resize:vertical}
-.check{display:flex;gap:.6rem;align-items:center;font-weight:600;cursor:pointer}
-.check input{width:20px;height:20px;accent-color:var(--azul)}
-.nota{font-size:.82rem;color:var(--gris);display:flex;gap:.4rem;align-items:center}
-
-/* Salón */
-.salon{background:linear-gradient(110deg,rgba(6,34,58,.93),rgba(0,92,153,.75)),url(img/salon.svg) center/cover fixed;color:#fff}
-.salon h2{color:#fff}.salon p{color:#d6eaf3;margin-bottom:1.8rem}
-.salon .chip{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
-.usos{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.uso{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);border-radius:20px;padding:1.4rem;transition:.4s var(--ease)}
-.uso:hover{background:rgba(255,255,255,.16);transform:translateY(-6px)}
-.uso [data-lucide]{font-size:1.8rem;color:var(--celeste);margin-bottom:.6rem}
-.uso b{display:block}
-
-/* Contacto */
-.dato{display:flex;gap:1rem;align-items:center;padding:1.1rem;border-radius:18px;background:var(--hielo);margin-bottom:1rem;transition:.4s var(--ease)}
-.dato:hover{transform:translateX(6px);background:#fff;box-shadow:var(--sombra)}
-.dato strong{display:block;color:var(--noche);font-size:.9rem}
-.dato span,.dato a{font-size:.95rem;color:var(--gris)}
-.mapa{border-radius:28px;overflow:hidden;box-shadow:var(--sombra-2);min-height:420px;margin-top:1.5rem}
-.mapa iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
-
-/* Pie */
-footer{background:var(--noche);color:#a9c2d3;padding:0 0 0;font-size:.93rem;position:relative}
-.ola-pie{display:block;width:100%;height:80px;margin-top:-79px;position:relative}
-footer .c.pie{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:2.5rem;padding:3.5rem 0 1rem}
-footer h4{color:#fff;font-size:1rem;margin-bottom:1.1rem}
-footer ul{list-style:none}
-footer li{margin-bottom:.6rem}
-footer a{color:#a9c2d3;display:inline-flex;align-items:center;gap:.5rem}
-footer a:hover{color:#fff}
-footer a:hover [data-lucide]{transform:translateX(3px)}
-footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
-.pie-logo{height:54px;width:auto;filter:brightness(0) invert(1);margin-bottom:1.2rem}
-.redes{display:flex;gap:.7rem;margin-top:1.4rem}
-.redes a{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.07);display:grid;place-items:center;transition:.35s var(--ease)}
-.redes a:hover{background:var(--grad);transform:translateY(-4px)}
-.redes svg{width:19px;height:19px}
-.pie-final{border-top:1px solid rgba(255,255,255,.08);margin-top:2rem;padding:1.4rem 0;text-align:center;font-size:.82rem}
-
-/* Flotantes */
-.wsp{position:fixed;right:1.3rem;bottom:5.4rem;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 25px -6px rgba(37,211,102,.6);z-index:150;transition:transform .35s var(--ease)}
-.wsp:hover{transform:scale(1.1);color:#fff}
-.wsp::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:onda 2.4s infinite}
-.wsp svg{width:28px;height:28px}
-.arriba{position:fixed;right:1.3rem;bottom:1.3rem;width:52px;height:52px;border-radius:16px;background:var(--grad);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;font-size:1.3rem;box-shadow:var(--sombra-2);opacity:0;visibility:hidden;transform:translateY(20px);transition:.45s var(--ease);z-index:150}
-.arriba.ver{opacity:1;visibility:visible;transform:none}
-.arriba:hover{transform:translateY(-4px)}
-.toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,120px);background:var(--noche);color:#fff;padding:.9rem 1.4rem;border-radius:50px;font-size:.9rem;display:flex;align-items:center;gap:.6rem;transition:transform .5s var(--ease),visibility .5s;visibility:hidden;z-index:400;box-shadow:var(--sombra-2)}
-.toast.ver{transform:translate(-50%,0);visibility:visible}
-.toast [data-lucide]{color:var(--celeste)}
-
-/* =========================================================
-   ANIMACIONES AL HACER SCROLL
-   ========================================================= */
-.rv{opacity:0;transform:translateY(50px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.rv.izq{transform:translateX(-60px)}.rv.der{transform:translateX(60px)}
-.rv.zoom{transform:scale(.88)}.rv.giro{transform:perspective(800px) rotateX(18deg) translateY(40px)}
-.rv.ver{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}.d6{transition-delay:.48s}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media (max-width:1400px){.marca span{display:none}}
-@media (max-width:1240px){
-  .menu{position:fixed;top:0;right:0;bottom:0;width:min(350px,86%);background:#fff;flex-direction:column;align-items:stretch;padding:5.5rem 1.2rem 2rem;gap:.2rem;box-shadow:-20px 0 50px rgba(0,0,0,.18);transform:translateX(105%);visibility:hidden;transition:transform .5s var(--ease),visibility .5s;overflow-y:auto;z-index:250}
-  .menu.abierto{transform:none;visibility:visible}
-  .menu a{padding:.85rem 1rem;font-size:1rem}
-  .menu a [data-lucide]{display:block;color:var(--azul);font-size:1.2rem}
-  .menu .btn{margin:1rem 0 0;justify-content:center}
-  .hamb{display:block}
-  .g4,.cifras-g{grid-template-columns:repeat(2,1fr)}
-  footer .c.pie{grid-template-columns:1fr 1fr}
-}
-@media (max-width:900px){
-  .dos,.g3,.g2{grid-template-columns:1fr}
-  .orden{order:-1}
-  .marca span{display:none}
-  .topbar .izq{display:none}
-  .flotante{display:none}
-  .ban-ctrl{bottom:5.5rem}
-}
-@media (max-width:600px){
-  body{font-size:15.5px}
-  .g4,.cifras-g,.fila,.usos,footer .c.pie{grid-template-columns:1fr}
-  .cifras{margin-top:-3.5rem}
-  .tabs{border-radius:24px}
-  .tab{flex:1 1 45%;justify-content:center;padding:.7rem .6rem;font-size:.85rem}
-  .flechas{display:none}
-  .salon,.cita-par{background-attachment:scroll}
-  .visor{aspect-ratio:4/5}
-  .topbar .der{gap:.8rem;font-size:.78rem}
-  .topbar .der a:first-child{display:none}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .rv,.slide .anim{opacity:1!important;transform:none!important}
-}
-</style>
+<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<div id="preloader"><img src="img/logo.png" alt="Consolación"></div>
 <div id="progreso"></div>
 
 <!-- ================= BARRA SUPERIOR ================= -->
@@ -446,21 +30,19 @@ footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
 <!-- ================= CABECERA ================= -->
 <header class="cab" id="cab">
   <nav class="c nav" aria-label="Menú principal">
-    <a href="#inicio" class="marca" aria-label="Inicio">
+    <a href="index.html" class="marca" aria-label="Inicio">
       <img src="img/logo.png" alt="Consolación">
       <span><b>Pequeño Cottolengo Don Orione</b>Río Cuarto · Córdoba</span>
     </a>
     <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
-      <li><a href="#inicio"><i data-lucide="house"></i>Inicio</a></li>
-      <li><a href="#quienes-somos"><i data-lucide="landmark"></i>Quiénes Somos</a></li>
-      <li><a href="#residentes"><i data-lucide="heart"></i>Residentes</a></li>
-      <li><a href="#equipo"><i data-lucide="users"></i>Equipo</a></li>
-      <li><a href="#servicios"><i data-lucide="stethoscope"></i>Servicios y Actividades</a></li>
-      <li><a href="#instalaciones"><i data-lucide="trees"></i>Instalaciones</a></li>
-      <li><a href="#trabaja"><i data-lucide="briefcase"></i>Trabajá y Participá</a></li>
-      <li><a href="#contacto"><i data-lucide="mail"></i>Contacto</a></li>
-      <li><a href="#sumate" class="btn btn-1"><i data-lucide="hand-heart"></i>Sumate</a></li>
+      <li><a href="index.html" class="activo" aria-current="page"><i data-lucide="house"></i>Inicio</a></li>
+      <li><a href="quienes-somos.html"><i data-lucide="landmark"></i>Quiénes Somos</a></li>
+      <li><a href="servicios.html"><i data-lucide="stethoscope"></i>Servicios</a></li>
+      <li><a href="instalaciones.html"><i data-lucide="trees"></i>Instalaciones</a></li>
+      <li><a href="admisiones.html"><i data-lucide="door-open"></i>Admisiones y Empleo</a></li>
+      <li><a href="contacto.html"><i data-lucide="mail"></i>Contacto</a></li>
+      <li><a href="sumate.html" class="btn btn-1"><i data-lucide="hand-heart"></i>Sumate</a></li>
     </ul>
   </nav>
 </header>
@@ -468,12 +50,8 @@ footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
 
 <main>
 
-<!-- ================= 1. BANNER DE INICIO ================= -->
-<section class="banner" id="inicio" aria-roledescription="carrusel" aria-label="Banner principal">
-  <div class="burbuja" style="width:460px;height:460px;right:4%;top:6%"></div>
-  <div class="burbuja" style="width:260px;height:260px;right:34%;bottom:12%;animation-delay:-6s"></div>
-
-  <!-- Slide 1 (sin capa azul: se ve la imagen tal cual) -->
+<!-- ================= BIENVENIDA ================= -->
+<section class="banner unico imagen-limpia" id="inicio" aria-label="Bienvenida">
   <div class="slide activo sin-capa">
     <div class="fondo" style="background-image:url(img/banner-1.svg)"></div>
     <div class="c">
@@ -481,53 +59,15 @@ footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
       <h1 class="anim">Un hogar que acoge y consuela en el <em>corazón de Río Cuarto</em>.</h1>
       <p class="anim">Desde hace más de cinco décadas acompañamos la vida de personas con discapacidad y adultos mayores en situación de vulnerabilidad, brindando atención sociosanitaria profesional, acompañamiento espiritual y un verdadero ambiente de familia.</p>
       <div class="botones anim">
-        <a href="#quienes-somos" class="btn btn-2">Conocé nuestra obra <i data-lucide="arrow-right"></i></a>
-        <a href="#instalaciones" class="btn btn-glass"><i data-lucide="circle-play"></i> Recorrido Virtual</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Slide 2 (sin capa azul: se ve la imagen tal cual) -->
-  <div class="slide sin-capa">
-    <div class="fondo" style="background-image:url(img/banner-2.svg)"></div>
-    <div class="c">
-      <span class="etq anim"><i data-lucide="church"></i> Hermanas de la Consolación</span>
-      <p class="h1 anim">Cuidado profesional con <em>alma de familia</em>.</p>
-      <p class="anim">Atención médica y de enfermería las 24 horas, rehabilitación, nutrición y acompañamiento espiritual desde el carisma de Santa María Rosa Molas.</p>
-      <div class="botones anim">
-        <a href="#servicios" class="btn btn-2">Nuestros servicios <i data-lucide="arrow-right"></i></a>
-        <a href="#equipo" class="btn btn-glass"><i data-lucide="users"></i> Conocé al equipo</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Slide 3 -->
-  <div class="slide">
-    <div class="fondo" style="background-image:url(img/banner-3.svg)"></div>
-    <div class="c">
-      <span class="etq anim"><i data-lucide="hand-heart"></i> Sumate a nuestra misión</span>
-      <p class="h1 anim">Tu ayuda se convierte en <em>consuelo</em>.</p>
-      <p class="anim">Hacete Padrino o Madrina, colaborá con tu empresa o regalá tu tiempo como voluntario. Cada gesto sostiene un hogar.</p>
-      <div class="botones anim">
-        <a href="#sumate" class="btn btn-2" data-abrir="padrinos">Hacete Padrino / Colaborá <i data-lucide="arrow-right"></i></a>
-        <a href="#sumate" class="btn btn-glass" data-abrir="voluntariado"><i data-lucide="heart-handshake"></i> Ser voluntario</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="ban-ctrl">
-    <div class="c">
-      <div class="puntos" id="puntos"></div>
-      <div class="flechas">
-        <button class="flecha" id="ant" aria-label="Anterior"><i data-lucide="chevron-left"></i></button>
-        <button class="flecha" id="sig" aria-label="Siguiente"><i data-lucide="chevron-right"></i></button>
+        <a href="contacto.html" class="btn btn-2"><i data-lucide="message-circle"></i> Pedí información</a>
+        <a href="quienes-somos.html" class="btn btn-glass">Conocé nuestra obra <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
   </div>
   <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#fff" d="M0,60 C240,100 480,10 720,40 C960,70 1200,20 1440,50 L1440,90 L0,90Z"/></svg>
 </section>
 
-<!-- 1.2 Cifras -->
+<!-- Cifras -->
 <section class="cifras" id="cifras">
   <div class="c cifras-g">
     <div class="cifra rv d1"><div class="ico"><i data-lucide="calendar-heart"></i></div><div class="num">+<span class="cont" data-fin="50">0</span> <small>años</small></div><h3>De historia</h3><p>Raíces profundas en la solidaridad de Río Cuarto desde 1970.</p></div>
@@ -537,418 +77,97 @@ footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
   </div>
 </section>
 
-<!-- Cinta de valores -->
-<div class="cinta" aria-hidden="true">
-  <div class="cinta-pista">
-    <span><i data-lucide="heart"></i> Dignidad</span><span><em>Calidez</em></span><span><i data-lucide="sparkles"></i> Consolación</span><span><em>Profesionalismo</em></span><span><i data-lucide="users"></i> Comunidad</span><span><em>Providencia</em></span>
-    <span><i data-lucide="heart"></i> Dignidad</span><span><em>Calidez</em></span><span><i data-lucide="sparkles"></i> Consolación</span><span><em>Profesionalismo</em></span><span><i data-lucide="users"></i> Comunidad</span><span><em>Providencia</em></span>
-  </div>
-</div>
-
-<!-- ================= 2. QUIÉNES SOMOS ================= -->
-<section id="quienes-somos" style="padding-top:3rem">
+<!-- ================= QUIÉNES SOMOS (resumen) ================= -->
+<section id="quienes-somos">
   <div class="c dos">
     <div class="foto-wrap rv izq">
       <div class="foto"><img src="img/origen.svg" alt="Historia del Pequeño Cottolengo"></div>
-      <div class="flotante" style="left:-20px;bottom:40px"><div class="ico sm"><i data-lucide="landmark"></i></div><div>Desde 1970<small>Fundado por el P. Geniale Silvi</small></div></div>
-      <div class="flotante b" style="right:-20px;top:30px"><div class="ico sm"><i data-lucide="heart-handshake"></i></div><div>Vecinos benefactores<small>Una obra de la comunidad</small></div></div>
+      <div class="flotante" style="left:-20px;bottom:40px"><div class="ico sm"><i data-lucide="landmark"></i></div><div>Desde 1970<small>Una obra de la comunidad</small></div></div>
     </div>
     <div class="rv der">
       <span class="chip"><i><i data-lucide="landmark"></i></i>Quiénes somos</span>
-      <h2>Nuestro origen y <span class="acento">fundación</span></h2>
-      <p class="lead" style="margin-top:1rem">El <strong>Pequeño Cottolengo Don Orione</strong> de Río Cuarto nació hacia el año <strong>1970</strong>, impulsado por el espíritu misionero y caritativo del <strong>Padre Geniale Silvi</strong> (sacerdote de la congregación orionita), con el respaldo del Obispado de Río Cuarto y el trabajo incansable de una recordada comisión de vecinos benefactores de nuestra ciudad.</p>
-      <div class="tiempo">
-        <div class="hito"><b>1857</b><p><strong>Tortosa (España):</strong> Santa María Rosa Molas funda la Congregación de Hermanas de Nuestra Señora de la Consolación.</p></div>
-        <div class="hito"><b>1970</b><p><strong>Río Cuarto:</strong> la casa abre sus puertas como un refugio de dignidad para acoger, cuidar y acompañar a los más desprotegidos.</p></div>
-        <div class="hito"><b>2001</b><p><strong>Hermanas de la Consolación:</strong> asumen la conducción, administración y cuidado integral del hogar.</p></div>
-        <div class="hito"><b>Hoy</b><p>Seguimos acompañando la vida con atención profesional, espiritualidad y ambiente de familia.</p></div>
-      </div>
+      <h2>Más de 50 años <span class="acento">acompañando la vida</span></h2>
+      <p class="lead" style="margin-top:1rem">El Pequeño Cottolengo Don Orione nació en Río Cuarto hacia 1970, impulsado por el <strong>Padre Geniale Silvi</strong> y un grupo de vecinos benefactores. Desde 2001 lo conducen las <strong>Hermanas de Nuestra Señora de la Consolación</strong>.</p>
+      <p>Hoy somos el hogar de personas con discapacidad y adultos mayores en situación de vulnerabilidad, donde la atención profesional y el ambiente de familia van de la mano.</p>
+      <div class="botones" style="margin-top:1.8rem"><a href="quienes-somos.html" class="btn btn-1">Conocé nuestra historia <i data-lucide="arrow-right"></i></a></div>
     </div>
   </div>
 </section>
 
-<section class="crema">
-  <div class="c dos">
-    <div class="rv izq">
-      <span class="chip"><i><i data-lucide="church"></i></i>Desde 2001</span>
-      <h2>Las Hermanas de la Consolación y <span class="acento">Santa María Rosa Molas</span></h2>
-      <p style="margin-top:1rem">Desde el año <strong>2001</strong>, la conducción, administración y cuidado integral del hogar están a cargo de la <strong>Congregación de Hermanas de Nuestra Señora de la Consolación</strong>.</p>
-      <p>La Congregación fue fundada en <strong>1857 en Tortosa (España)</strong> por <strong>Santa María Rosa Molas y Vallvé</strong>, una mujer adelantada a su tiempo que consagró su vida a la atención de los enfermos, los ancianos, los niños y las personas en situación de exclusión.</p>
-      <p>Su misión fundacional inspira cada gesto cotidiano de nuestra comunidad en Río Cuarto y en todas las obras educativas, sanitarias y residenciales que la Congregación desarrolla en Argentina y el mundo.</p>
-      <div class="botones" style="margin-top:1.8rem">
-        <a class="btn btn-1" href="https://www.consolacion.org/" target="_blank" rel="noopener"><i data-lucide="globe"></i> Sitio internacional</a>
-        <a class="btn btn-line" href="https://www.residenciasconsolacion.org/" target="_blank" rel="noopener"><i data-lucide="building-2"></i> Red de residencias</a>
-      </div>
-    </div>
-    <div class="foto-wrap rv der orden"><div class="foto"><img src="img/hermanas.svg" alt="Hermanas de la Consolación"></div></div>
-  </div>
-</section>
-
-<section class="cita-par">
-  <div class="c rv zoom">
-    <span class="comillas"><i data-lucide="quote"></i></span>
-    <blockquote>«Prolongar la obra evangelizadora de Cristo entre los que padecen cualquier necesidad; con nuestro servicio les anunciaremos a Jesús como única y auténtica consolación».</blockquote>
-    <cite>Misión fundacional · Santa María Rosa Molas</cite>
-  </div>
-</section>
-
-<section>
-  <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="compass"></i></i>Identidad</span>
-      <h2>Misión, visión y <span class="acento">valores</span></h2>
-    </div>
-    <div class="grid g2">
-      <div class="tarjeta mv rv izq"><i data-lucide="target" class="marca-agua"></i><div class="ico"><i data-lucide="target"></i></div><h3>Misión</h3><p>Brindar alojamiento permanente, asistencia sociosanitaria integral y rehabilitación a personas con discapacidad y adultos mayores en situación de vulnerabilidad, garantizando el pleno ejercicio de sus derechos, su inclusión comunitaria y el acompañamiento espiritual desde el carisma de la Consolación.</p></div>
-      <div class="tarjeta mv rv der"><i data-lucide="eye" class="marca-agua"></i><div class="ico"><i data-lucide="eye"></i></div><h3>Visión</h3><p>Ser una institución referente en Río Cuarto y la región por la excelencia humana, ética y profesional en el cuidado integral, manteniendo siempre las puertas abiertas a la solidaridad de la comunidad.</p></div>
-    </div>
-    <div class="grid g4" style="margin-top:1.4rem">
-      <div class="tarjeta valor rv giro d1"><div class="ico"><i data-lucide="heart-handshake"></i></div><h3>Dignidad y Buen Trato</h3><p>Cada residente es el centro de nuestra labor; respetamos su historia de vida, su singularidad, sus tiempos y sus derechos fundamentales.</p></div>
-      <div class="tarjeta valor rv giro d2"><div class="ico"><i data-lucide="flame"></i></div><h3>Calidez y Consolación</h3><p>Cuidamos desde la cercanía, la ternura y la escucha activa, construyendo un auténtico ambiente de hogar y familia.</p></div>
-      <div class="tarjeta valor rv giro d3"><div class="ico"><i data-lucide="shield-check"></i></div><h3>Profesionalismo y Rigor Ético</h3><p>Protocolos asistenciales interdisciplinarios, estricto cumplimiento de la normativa sociosanitaria vigente y absoluta transparencia administrativa.</p></div>
-      <div class="tarjeta valor rv giro d4"><div class="ico"><i data-lucide="users"></i></div><h3>Comunidad y Providencia</h3><p>Trabajo articulado entre el equipo profesional, las familias, el Estado, los voluntarios, los padrinos y las empresas de nuestra región.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 3. RESIDENTES ================= -->
-<section class="suave" id="residentes">
-  <div class="c dos">
-    <div class="rv izq">
-      <span class="chip"><i><i data-lucide="heart"></i></i>Nuestros residentes</span>
-      <h2>El corazón de <span class="acento">nuestra casa</span></h2>
-      <p class="lead" style="margin-top:1rem">Cada residente no es un número ni un paciente: es una persona única con nombre propio, historia, afectos y potencialidades. Acompañamos la vida cotidiana de <strong>personas adultas con discapacidad y adultos mayores</strong>, promoviendo su autonomía posible, su autodeterminación y su participación activa en la vida de la casa.</p>
-      <ul class="lista">
-        <li><div class="ico sm"><i data-lucide="scale"></i></div><div><strong>Enfoque de Derechos</strong><span>Alineados con la Convención sobre los Derechos de las Personas con Discapacidad y la Convención Interamericana sobre la Protección de los Derechos Humanos de las Personas Mayores, asegurando un entorno libre de barreras y pleno de respeto.</span></div></li>
-        <li><div class="ico sm"><i data-lucide="house-heart"></i></div><div><strong>Vínculos Familiares y Comunitarios</strong><span>Fomentamos el contacto permanente con sus familias y referentes afectivos, abriendo nuestra casa para compartir encuentros, celebraciones y momentos cotidianos que fortalecen su identidad y pertenencia.</span></div></li>
-      </ul>
-    </div>
-    <div class="foto-wrap rv der orden">
-      <div class="foto"><img src="img/residentes.svg" alt="Residentes del hogar"></div>
-      <div class="flotante" style="right:-20px;bottom:50px"><div class="ico sm"><i data-lucide="smile"></i></div><div>Autonomía y alegría<small>Planes individuales de atención</small></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= EQUIPO ================= -->
-<section id="equipo">
-  <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="users"></i></i>Nuestro equipo</span>
-      <h2>Profesional y <span class="acento">asistencial</span></h2>
-      <p class="lead">La calidad de nuestro cuidado nace de la unión entre la <strong>vocación de servicio</strong> y la <strong>formación técnica continua</strong>, con un equipo interdisciplinario comprometido con la calidez en el trato y la excelencia profesional.</p>
-    </div>
-    <div class="grid g3">
-      <div class="tarjeta rv d1"><div class="ico"><i data-lucide="church"></i></div><h3>Dirección Congregacional y Técnica</h3><p>Liderada por las Hermanas de Nuestra Señora de la Consolación junto a profesionales de gestión sociosanitaria, garantizando coherencia institucional, supervisión permanente y calidad asistencial.</p></div>
-      <div class="tarjeta rv d2"><div class="ico"><i data-lucide="stethoscope"></i></div><h3>Médico y Enfermería</h3><p>Un profesional médico clínico y licenciados/auxiliares de enfermería que realizan seguimiento preventivo, control de medicación y atención de salud las 24 horas del día.</p></div>
-      <div class="tarjeta rv d3"><div class="ico"><i data-lucide="brain"></i></div><h3>Equipo Técnico Interdisciplinario</h3><p>Especialistas en <strong>Trabajo Social, Psicología, Kinesiología, Terapia Ocupacional, Fonoaudiología y Nutrición</strong>, que diseñan Planes Individuales de Atención (PIA).</p></div>
-      <div class="tarjeta rv d1"><div class="ico"><i data-lucide="hand-heart"></i></div><h3>Cuidadores Gerontológicos y de Discapacidad</h3><p>Personal capacitado en el acompañamiento diario (higiene, confort, alimentación y movilidad), brindando presencia afectuosa y contención constante.</p></div>
-      <div class="tarjeta rv d2"><div class="ico"><i data-lucide="wrench"></i></div><h3>Personal de Soporte Institucional</h3><p>Cocina, lavadero-ropería, mantenimiento edilicio y administración sostienen con dedicación el funcionamiento impecable de cada rincón del hogar.</p></div>
-      <div class="tarjeta rv d3" style="background:var(--grad);border:0;color:#fff"><div class="ico" style="background:#fff;color:var(--azul)"><i data-lucide="user-plus"></i></div><h3 style="color:#fff">¿Querés sumarte?</h3><p style="color:#e6f4fa">Buscamos personas con vocación de servicio, empatía y compromiso ético.</p><a href="#trabaja" class="btn btn-2" style="margin-top:1.2rem">Trabajá con nosotros <i data-lucide="arrow-right"></i></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 4. SERVICIOS ================= -->
+<!-- ================= QUÉ OFRECEMOS ================= -->
 <section class="suave" id="servicios">
   <div class="c">
     <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="stethoscope"></i></i>Servicios</span>
-      <h2>Modelo de atención <span class="acento">integral</span></h2>
-      <p class="lead">Abordamos a la persona en todas sus dimensiones a través de prestaciones integrales.</p>
-      <div class="dims"><span><i data-lucide="activity"></i> Biológica</span><span><i data-lucide="brain"></i> Psicológica</span><span><i data-lucide="users"></i> Social</span><span><i data-lucide="sparkles"></i> Espiritual</span></div>
+      <span class="chip"><i><i data-lucide="stethoscope"></i></i>Qué ofrecemos</span>
+      <h2>Atención <span class="acento">integral</span>, todos los días</h2>
+      <p class="lead">Cuidamos a cada persona en todas sus dimensiones: física, psicológica, social y espiritual.</p>
     </div>
-    <div class="grid g3">
-      <div class="tarjeta serv rv d1"><span class="n">01</span><div class="ico"><i data-lucide="bed-double"></i></div><h3>Alojamiento Permanente y Cuidados Continuos (24/365)</h3><p>Residencia asistida con acompañamiento personalizado en todas las actividades de la vida diaria durante los 365 días del año.</p></div>
-      <div class="tarjeta serv rv d2"><span class="n">02</span><div class="ico"><i data-lucide="heart-pulse"></i></div><h3>Atención Médica, Enfermería y Área Protegida</h3><p>Control clínico periódico, gestión farmacológica segura y enfermería las 24 horas.</p></div>
-      <div class="tarjeta serv rv d3"><span class="n">03</span><div class="ico"><i data-lucide="accessibility"></i></div><h3>Rehabilitación Funcional y Estimulación</h3><p>Kinesiología motora y respiratoria, terapia ocupacional para el mantenimiento de habilidades cotidianas y estimulación fonoaudiológica, en sesiones individuales y grupales.</p></div>
-      <div class="tarjeta serv rv d1"><span class="n">04</span><div class="ico"><i data-lucide="salad"></i></div><h3>Nutrición Especializada</h3><p>Menús diarios supervisados por licenciados en nutrición, elaborados en nuestra cocina y adaptados a cada requerimiento clínico (dietas blandas, hiposódicas, para diabéticos, suplementación).</p></div>
-      <div class="tarjeta serv rv d2"><span class="n">05</span><div class="ico"><i data-lucide="messages-square"></i></div><h3>Acompañamiento Psicosocial y Familiar</h3><p>Contención emocional a residentes, orientación a familias y articulación con obras sociales, organismos públicos y redes comunitarias.</p></div>
-      <div class="tarjeta serv rv d3"><span class="n">06</span><div class="ico"><i data-lucide="cross"></i></div><h3>Acompañamiento Espiritual y Pastoral</h3><p>Respeto profundo por la libertad de conciencia y fe de cada residente, con espacios de oración, sacramentos y acompañamiento espiritual.</p></div>
+    <div class="grid g4">
+      <a href="servicios.html" class="tarjeta rv d1"><div class="ico"><i data-lucide="bed-double"></i></div><h3>Cuidado 24/365</h3><p>Residencia asistida con acompañamiento personalizado todos los días del año.</p></a>
+      <a href="servicios.html#servicios" class="tarjeta rv d2"><div class="ico"><i data-lucide="heart-pulse"></i></div><h3>Salud y rehabilitación</h3><p>Médico, enfermería 24 h, kinesiología, terapia ocupacional y nutrición.</p></a>
+      <a href="servicios.html#actividades" class="tarjeta rv d3"><div class="ico"><i data-lucide="palette"></i></div><h3>Talleres y vida comunitaria</h3><p>Arte, huerta, música, memoria, paseos y celebraciones.</p></a>
+      <a href="servicios.html#servicios" class="tarjeta rv d4"><div class="ico"><i data-lucide="cross"></i></div><h3>Acompañamiento espiritual</h3><p>Capilla, celebraciones y respeto por la fe de cada residente.</p></a>
     </div>
+    <div class="centro-btn rv"><a href="servicios.html" class="btn btn-line">Ver todos los servicios <i data-lucide="arrow-right"></i></a></div>
   </div>
 </section>
 
-<!-- ================= 5. ACTIVIDADES ================= -->
-<section id="actividades">
-  <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="palette"></i></i>Actividades</span>
-      <h2>Talleres y <span class="acento">vida comunitaria</span></h2>
-      <p class="lead">Una vida plena necesita movimiento, creatividad, alegría y encuentro. Por eso desarrollamos un calendario semanal de actividades terapéuticas, recreativas y culturales.</p>
-    </div>
-    <div class="grid g4">
-      <article class="taller rv d1"><div class="img"><img src="img/taller-arte.svg" alt="Taller de arte"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="palette"></i></div><h3>Arte y Expresión Plástica</h3><p>Pintura, dibujo, cerámica y manualidades que estimulan la motricidad fina, la creatividad y la autoestima.</p></div></article>
-      <article class="taller rv d2"><div class="img"><img src="img/taller-huerta.svg" alt="Huerta terapéutica"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="sprout"></i></div><h3>Huerta Terapéutica y Jardinería</h3><p>Contacto con la tierra y el cuidado de plantas, promoviendo la responsabilidad y el disfrute sensorial.</p></div></article>
-      <article class="taller rv d3"><div class="img"><img src="img/taller-memoria.svg" alt="Estimulación cognitiva"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="puzzle"></i></div><h3>Estimulación Cognitiva y Memoria</h3><p>Juegos de mesa, lectura compartida, ejercicios de atención, lenguaje y reminiscencia guiados por profesionales.</p></div></article>
-      <article class="taller rv d4"><div class="img"><img src="img/taller-musica.svg" alt="Música y movimiento"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="music"></i></div><h3>Música, Canto y Movimiento</h3><p>Expresión corporal, ritmos y folclore que despiertan emociones positivas y fortalecen la socialización.</p></div></article>
-    </div>
-
-    <h3 class="subt rv">Recreación, comunidad y vida espiritual</h3>
-    <div class="grid g4">
-      <div class="tarjeta mini rv d1" style="flex-direction:column"><div class="ico claro"><i data-lucide="party-popper"></i></div><h3>Celebración de la Vida</h3><p>Cumpleaños mensuales, fechas patrias, peñas folclóricas y eventos especiales.</p></div>
-      <div class="tarjeta mini rv d2" style="flex-direction:column"><div class="ico claro"><i data-lucide="bus"></i></div><h3>Paseos y Excursiones</h3><p>Salidas a espacios culturales, parques y eventos de Río Cuarto con acompañamiento profesional y voluntario.</p></div>
-      <div class="tarjeta mini rv d3" style="flex-direction:column"><div class="ico claro"><i data-lucide="school"></i></div><h3>Encuentros Intergeneracionales</h3><p>Colegios, parroquias, grupos juveniles e instituciones comparten jornadas de juegos, música y amistad.</p></div>
-      <div class="tarjeta mini rv d4" style="flex-direction:column"><div class="ico claro"><i data-lucide="church"></i></div><h3>Celebraciones Litúrgicas</h3><p>Misas en nuestra Capilla, adoración, Rosario y fiestas de San Luis Orione y Santa María Rosa Molas.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 6. INSTALACIONES ================= -->
+<!-- ================= NUESTRA CASA ================= -->
 <section class="crema" id="instalaciones">
   <div class="c">
     <div class="cab-sec centro rv">
       <span class="chip"><i><i data-lucide="trees"></i></i>Nuestra casa</span>
-      <h2>Instalaciones y <span class="acento">visita virtual</span></h2>
-      <p class="lead">Un entorno natural privilegiado de <strong>más de 1,8 hectáreas</strong>, pensado arquitectónicamente para eliminar barreras, brindar seguridad y favorecer la tranquilidad.</p>
-    </div>
-    <!-- Para insertar el vídeo o recorrido 360°: reemplazar el contenido de .visor por el <iframe> -->
-    <div class="visor rv zoom">
-      <img src="img/parque.svg" alt="">
-      <div class="capa">
-        <button class="play" id="btnVisita" aria-label="Reproducir visita virtual"><i data-lucide="play"></i></button>
-        <h3>Recorré nuestra casa por dentro — Visita Virtual</h3>
-        <p>Te invitamos a abrir las puertas de nuestro hogar desde donde estés: parques, pabellones, salas de talleres, comedor y capilla, diseñados con amor y criterios de accesibilidad universal.</p>
-      </div>
+      <h2>Más de 1,8 hectáreas de <span class="acento">naturaleza</span></h2>
+      <p class="lead">Un predio seguro, arbolado y totalmente accesible, pensado para la tranquilidad y el bienestar.</p>
     </div>
     <div class="grid g3">
-      <div class="tarjeta est rv d1"><div class="ico sm"><i data-lucide="bed-double"></i></div><div><h3>Pabellones y Habitaciones Adaptadas</h3><p>Dormitorios luminosos, climatización frío/calor, baños adaptados, pisos antideslizantes y llamado individual.</p></div></div>
-      <div class="tarjeta est rv d2"><div class="ico sm"><i data-lucide="utensils"></i></div><div><h3>Comedores y Salas de Estar</h3><p>Espacios amplios y cálidos para el encuentro diario, las comidas compartidas y el descanso.</p></div></div>
-      <div class="tarjeta est rv d3"><div class="ico sm"><i data-lucide="activity"></i></div><div><h3>Rehabilitación y Laborterapia</h3><p>Consultorios y talleres con materiales terapéuticos y mobiliario ergonómico.</p></div></div>
-      <div class="tarjeta est rv d1"><div class="ico sm"><i data-lucide="trees"></i></div><div><h3>Parques, Jardines y Galerías</h3><p>Espacios verdes arbolados con senderos accesibles y galerías protegidas para todo el año.</p></div></div>
-      <div class="tarjeta est rv d2"><div class="ico sm"><i data-lucide="church"></i></div><div><h3>Capilla Institucional</h3><p>Un espacio de recogimiento, paz y oración en el corazón del predio, abierto a todos.</p></div></div>
-      <div class="tarjeta est rv d3"><div class="ico sm"><i data-lucide="shield-check"></i></div><div><h3>Soporte y Seguridad Edilicia</h3><p>Cocina industrial, lavadero, prevención de incendios, iluminación de emergencia y respaldo energético.</p></div></div>
+      <a href="instalaciones.html" class="taller rv d1" style="color:inherit"><div class="img"><img src="img/parque.svg" alt="Parques y jardines"></div><div class="cuerpo" style="padding-top:1.2rem"><h3>Parques y jardines</h3><p>Senderos accesibles y galerías protegidas para todo el año.</p></div></a>
+      <a href="instalaciones.html" class="taller rv d2" style="color:inherit"><div class="img"><img src="img/hab.svg" alt="Habitaciones adaptadas"></div><div class="cuerpo" style="padding-top:1.2rem"><h3>Habitaciones adaptadas</h3><p>Dormitorios luminosos, climatizados y con baños adaptados.</p></div></a>
+      <a href="instalaciones.html" class="taller rv d3" style="color:inherit"><div class="img"><img src="img/capilla.svg" alt="Capilla"></div><div class="cuerpo" style="padding-top:1.2rem"><h3>Capilla</h3><p>Un espacio de paz y oración en el corazón del predio.</p></div></a>
     </div>
+    <div class="centro-btn rv"><a href="instalaciones.html" class="btn btn-1"><i data-lucide="circle-play"></i> Recorré nuestra casa</a></div>
   </div>
 </section>
 
-<!-- ================= 7. SUMATE ================= -->
-<section class="suave" id="sumate">
-  <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="hand-heart"></i></i>Cómo colaborar</span>
-      <h2>Sumate a nuestra <span class="acento">misión</span></h2>
-      <p class="lead">El sostenimiento diario de nuestra obra es posible gracias a la Providencia y al corazón generoso de personas, familias y empresas de Río Cuarto que eligen transformar realidades.</p>
-    </div>
-
-    <div class="tabs rv" role="tablist">
-      <button class="tab activa" data-panel="padrinos"><i data-lucide="heart"></i> Padrinos</button>
-      <button class="tab" data-panel="bienhechores"><i data-lucide="gift"></i> Bienhechores</button>
-      <button class="tab" data-panel="empresas"><i data-lucide="building-2"></i> Empresas</button>
-      <button class="tab" data-panel="voluntariado"><i data-lucide="heart-handshake"></i> Voluntariado</button>
-    </div>
-
-    <!-- Padrinos -->
-    <div class="panel activo" id="padrinos">
-      <div class="caja dos" style="align-items:start">
-        <div>
-          <div class="ico" style="margin-bottom:1.2rem"><i data-lucide="heart"></i></div>
-          <h3 class="grande">¿Qué es ser Padrino o Madrina del Cottolengo?</h3>
-          <p>Es construir un <strong>vínculo de amor, cercanía y compromiso sostenido</strong> con la vida de nuestros residentes.</p>
-          <p>Más allá del aporte económico mensual —que nos permite garantizar una atención integral y profesional—, el padrinazgo significa presencia afectiva: acompañar su día a día y sostener su hogar en el tiempo.</p>
-        </div>
-        <div>
-          <h3>¿Cómo hacerte Padrino o Madrina?</h3>
-          <ol class="pasos">
-            <li><div><strong>Elegí tu aporte mensual:</strong> definí el monto a tu alcance mediante débito automático o transferencia bancaria programada.</div></li>
-            <li><div><strong>Completá tu adhesión:</strong> escribinos por correo o WhatsApp con tus datos para registrarte en el Programa de Padrinos y Madrinas.</div></li>
-            <li><div><strong>Recibí novedades de la casa:</strong> te compartimos noticias, actividades y mejoras logradas gracias a tu acompañamiento.</div></li>
-          </ol>
-          <div class="contacto"><div class="ico"><i data-lucide="mail"></i></div><div>Contacto Padrinos y Madrinas<br><a href="mailto:cottolengoriocuarto@consolacion.org?subject=Quiero%20ser%20Padrino%20/%20Madrina"><strong>cottolengoriocuarto@consolacion.org</strong></a></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bienhechores -->
-    <div class="panel" id="bienhechores">
-      <div class="caja">
-        <h3 class="grande">Quiero ser Bienhechor / otras formas de colaborar</h3>
-        <p class="lead">Si deseás colaborar de manera puntual o apoyar proyectos específicos, podés hacerlo de diversas maneras:</p>
-        <div class="grid g4" style="margin-top:1.8rem">
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="hand-coins"></i></div><h3>Donación Única</h3><p>Una contribución por única vez mediante transferencia bancaria oficial para el funcionamiento general o mejoras edilicias.</p></div>
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="package-open"></i></div><h3>Insumos Prioritarios</h3><p>Alimentos no perecederos, pañales para adultos, higiene personal, ropa de cama y toallas, insumos de enfermería y materiales de talleres <em>(consultanos las necesidades vigentes)</em>.</p></div>
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="ticket"></i></div><h3>Bonos, Rifas y Eventos</h3><p>Participá y ayudanos a difundir nuestras campañas y eventos a beneficio.</p></div>
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="scroll-text"></i></div><h3>Legados y Herencias</h3><p>Dejá una huella de amor perdurable con un legado testamentario a favor de la Congregación para el sostenimiento del Cottolengo.</p></div>
-        </div>
-        <div class="alias">
-          <div><small><i data-lucide="landmark"></i> Alias bancario</small><strong>JEFA.BRONCE.DORADO</strong></div>
-          <button class="btn btn-2" type="button" data-copiar="JEFA.BRONCE.DORADO"><i data-lucide="copy"></i> Copiar alias</button>
-        </div>
-        <div class="contacto"><div class="ico"><i data-lucide="mail"></i></div><div>Contacto Bienhechores<br><a href="mailto:cottolengoriocuarto@consolacion.org?subject=Quiero%20colaborar"><strong>cottolengoriocuarto@consolacion.org</strong></a></div></div>
-      </div>
-    </div>
-
-    <!-- Empresas -->
-    <div class="panel" id="empresas">
-      <div class="caja">
-        <h3 class="grande">Colaboración de empresas y beneficios fiscales</h3>
-        <p class="lead">Invitamos a empresas, comercios, productores agropecuarios e instituciones de Río Cuarto y la región a desarrollar acciones de <strong>Responsabilidad Social Empresaria (RSE)</strong> con impacto directo y transparente.</p>
-        <div class="grid g4" style="margin-top:1.8rem">
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="hammer"></i></div><h3>Infraestructura o Equipamiento</h3><p>Accesibilidad, climatización, equipamiento médico o remodelación de pabellones, con reconocimiento en la memoria anual y placas de agradecimiento.</p></div>
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="trending-up"></i></div><h3>Aportes Periódicos o Únicos</h3><p>Contribuciones al sostenimiento operativo de los programas de salud y rehabilitación.</p></div>
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="truck"></i></div><h3>Donación en Especie o Servicios</h3><p>Alimentos, insumos de limpieza, mantenimiento técnico, logística o servicios profesionales.</p></div>
-          <div class="tarjeta"><div class="ico sm"><i data-lucide="users-round"></i></div><h3>Voluntariado Corporativo</h3><p>Jornadas solidarias de trabajo en equipo junto a los colaboradores de tu empresa en el predio.</p></div>
-        </div>
-        <div class="alias">
-          <div><small><i data-lucide="landmark"></i> Alias bancario</small><strong>JEFA.BRONCE.DORADO</strong></div>
-          <button class="btn btn-2" type="button" data-copiar="JEFA.BRONCE.DORADO"><i data-lucide="copy"></i> Copiar alias</button>
-        </div>
-        <div class="fiscal">
-          <h4><i data-lucide="file-check-2"></i> Respaldo jurídico y beneficios fiscales (República Argentina)</h4>
-          <ul class="lista" style="margin-top:0">
-            <li><div class="ico sm claro"><i data-lucide="percent"></i></div><div><strong>Deducción en el Impuesto a las Ganancias</strong><span>Conforme al Artículo 85, inciso c) de la Ley de Impuesto a las Ganancias (t.o. 2019 y normativa reglamentaria de ARCA / ex AFIP), las donaciones efectuadas a instituciones religiosas reconocidas y entidades de asistencia social exentas (Art. 26, incisos e y f) son deducibles de la base imponible hasta el límite del 5% de la ganancia neta del ejercicio.</span></div></li>
-            <li><div class="ico sm claro"><i data-lucide="receipt"></i></div><div><strong>Comprobantes Oficiales</strong><span>Emitimos el recibo oficial correspondiente para respaldo contable y fiscal de tu empresa (los aportes dinerarios deben realizarse mediante transferencia o depósito bancario a la cuenta institucional oficial para habilitar su deducción impositiva).</span></div></li>
-          </ul>
-        </div>
-        <div class="contacto"><div class="ico"><i data-lucide="mail"></i></div><div>Contacto Empresas y Administración<br><a href="mailto:administracion.cottolengoriocuarto@consolacion.org?subject=Alianza%20RSE"><strong>administracion.cottolengoriocuarto@consolacion.org</strong></a></div></div>
-      </div>
-    </div>
-
-    <!-- Voluntariado -->
-    <div class="panel" id="voluntariado">
-      <div class="caja">
-        <div class="dos" style="align-items:start">
-          <div>
-            <h3 class="grande">Regalá tu tiempo y tu corazón</h3>
-            <p>Nuestros voluntarios son un puente vivo entre la comunidad de Río Cuarto y nuestros residentes, sumando alegría, escucha y compañía bajo el carisma de la Consolación.</p>
-            <p>Sus tareas enriquecen la vida social, recreativa y espiritual de los residentes, <strong>complementando —y nunca reemplazando— la labor del equipo profesional y de enfermería</strong>.</p>
-            <ul class="lista">
-              <li><div class="ico sm claro"><i data-lucide="book-open"></i></div><div><strong>Acompañamiento Afectivo y Recreativo</strong><span>Charlas, lectura, juegos de mesa, música y paseos por parques y galerías.</span></div></li>
-              <li><div class="ico sm claro"><i data-lucide="palette"></i></div><div><strong>Apoyo en Talleres</strong><span>Junto a los profesionales en arte, manualidades, huerta y recreación.</span></div></li>
-              <li><div class="ico sm claro"><i data-lucide="sparkles"></i></div><div><strong>Acompañamiento Espiritual</strong><span>Celebraciones religiosas y momentos de oración comunitaria.</span></div></li>
-              <li><div class="ico sm claro"><i data-lucide="party-popper"></i></div><div><strong>Eventos y Campañas</strong><span>Cumpleaños, fechas patrias, colectas y clasificación de donaciones en ropería.</span></div></li>
-            </ul>
-          </div>
-          <div>
-            <div class="foto" style="margin-bottom:1.5rem"><img src="img/voluntariado.svg" alt="Voluntariado" style="aspect-ratio:16/10"></div>
-            <div class="aviso"><i data-lucide="triangle-alert"></i><div><strong>Importante:</strong> para resguardar la seguridad clínica de nuestros residentes, los voluntarios <strong>no realizan</strong> tareas de enfermería, administración de medicación, higiene personal ni movilización asistencial compleja.</div></div>
-            <h3>¿Cómo sumarte como voluntario/a?</h3>
-            <ol class="pasos">
-              <li><div><strong>Escribinos:</strong> contanos tu disponibilidad horaria y tus intereses o habilidades.</div></li>
-              <li><div><strong>Entrevista e Inducción:</strong> con el Área de Trabajo Social y la Dirección.</div></li>
-              <li><div><strong>Firma del Compromiso e Inicio:</strong> te integrás a tu equipo de referencia.</div></li>
-            </ol>
-          </div>
-        </div>
-        <h3 style="margin:2rem 0 .5rem">Nuestro compromiso mutuo</h3>
-        <p style="color:var(--gris)">En cumplimiento de la <strong>Ley Nacional N° 25.855 de Voluntariado Social</strong> y los protocolos de protección de derechos de la Congregación, toda persona que ingresa realiza una <strong>charla inicial de inducción</strong> y firma el <strong>Compromiso de Voluntariado Institucional</strong>, asumiendo:</p>
-        <div class="grid g4" style="margin-top:1.4rem">
-          <div class="tarjeta compromiso"><div class="ico sm"><i data-lucide="smile"></i></div><h3>Buen Trato y Respeto</h3><p>Trato cálido, paciente y respetuoso hacia residentes, trabajadores y religiosas.</p></div>
-          <div class="tarjeta compromiso"><div class="ico sm"><i data-lucide="camera-off"></i></div><h3>Confidencialidad e Imagen</h3><p>Reserva absoluta y compromiso de <strong>no tomar ni difundir fotos o videos</strong> sin autorización de la Dirección.</p></div>
-          <div class="tarjeta compromiso"><div class="ico sm"><i data-lucide="calendar-check"></i></div><h3>Constancia y Puntualidad</h3><p>Cumplir días y horarios para dar previsibilidad y estabilidad afectiva.</p></div>
-          <div class="tarjeta compromiso"><div class="ico sm"><i data-lucide="hand-heart"></i></div><h3>Normas Sanitarias y Altruismo</h3><p>Respeto por los protocolos de higiene y carácter solidario y no remunerado.</p></div>
-        </div>
-        <div class="contacto"><div class="ico"><i data-lucide="mail"></i></div><div>Contacto Voluntariado<br><a href="mailto:cottolengoriocuarto@consolacion.org?subject=Quiero%20ser%20voluntario/a"><strong>cottolengoriocuarto@consolacion.org</strong></a></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Banda CTA -->
-<section class="banda">
+<!-- ================= SUMATE ================= -->
+<section class="banda" id="sumate">
   <i data-lucide="heart" class="ic-fondo" style="font-size:9rem;left:6%;top:15%"></i>
   <i data-lucide="sparkles" class="ic-fondo" style="font-size:7rem;right:8%;bottom:10%;animation-delay:-4s"></i>
-  <i data-lucide="hand-heart" class="ic-fondo" style="font-size:6rem;right:22%;top:8%;animation-delay:-8s"></i>
   <div class="c rv zoom">
     <h2>Cada gesto <span class="acento" style="background:linear-gradient(90deg,#93D1E1,#fff);-webkit-background-clip:text;background-clip:text">sostiene un hogar</span></h2>
     <p>Tu aporte, tu tiempo o tu oración se transforman en cuidado, dignidad y consolación para quienes más lo necesitan.</p>
-    <div class="botones" style="justify-content:center">
-      <a href="#sumate" class="btn btn-2" data-abrir="padrinos"><i data-lucide="heart"></i> Hacete Padrino o Madrina</a>
-      <a href="#sumate" class="btn btn-glass" data-abrir="voluntariado"><i data-lucide="heart-handshake"></i> Quiero ser voluntario/a</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 8. TRABAJÁ Y PARTICIPÁ ================= -->
-<section id="trabaja">
-  <div class="c">
-    <div class="cab-sec centro rv">
-      <span class="chip"><i><i data-lucide="briefcase"></i></i>Trabajá y participá</span>
-      <h2>Empleo, prácticas y <span class="acento">admisiones</span></h2>
-    </div>
     <div class="grid g3">
-      <div class="tarjeta op rv d1"><div class="ico"><i data-lucide="briefcase"></i></div><h3>¿Querés trabajar con nosotros?</h3><p>Buscamos personas con vocación de servicio, empatía y compromiso ético para enfermería, cuidadores, profesionales de la salud, cocina, limpieza… Envianos tu CV indicando en el asunto el área de interés (ej. <em>Enfermería / Cuidadores / Cocina</em>).</p>
-        <div class="contacto"><div class="ico"><i data-lucide="send"></i></div><a href="mailto:direccion.cottolengoriocuarto@consolacion.org?subject=CV%20-%20" style="word-break:break-all">direccion.cottolengoriocuarto@consolacion.org</a></div></div>
-      <div class="tarjeta op rv d2"><div class="ico"><i data-lucide="graduation-cap"></i></div><h3>Prácticas y Pasantías</h3><p>Promovemos la formación de futuros profesionales en discapacidad y gerontología. Recibimos estudiantes <strong>exclusivamente a través de convenios marco vigentes con Universidades e Institutos de Educación Superior</strong>.</p>
-        <div class="contacto"><div class="ico"><i data-lucide="send"></i></div><a href="mailto:direccion.cottolengoriocuarto@consolacion.org?subject=Convenio%20de%20pr%C3%A1cticas" style="word-break:break-all">direccion.cottolengoriocuarto@consolacion.org</a></div></div>
-      <div class="tarjeta op rv d3"><div class="ico"><i data-lucide="door-open"></i></div><h3>Solicitud de Ingreso</h3><p>La admisión es evaluada de manera integral por el Equipo Técnico Interdisciplinario y la Dirección Congregacional, priorizando la vulnerabilidad social y la adecuación de nuestros apoyos a las necesidades de la persona.</p>
-        <div class="contacto"><div class="ico"><i data-lucide="send"></i></div><a href="mailto:direccion.cottolengoriocuarto@consolacion.org?subject=Solicitud%20de%20ingreso" style="word-break:break-all">direccion.cottolengoriocuarto@consolacion.org</a></div></div>
+      <a href="sumate.html#padrinos" class="uso"><i data-lucide="heart"></i><b>Padrino o Madrina</b><p>Un aporte mensual que sostiene el día a día del hogar.</p></a>
+      <a href="sumate.html#empresas" class="uso"><i data-lucide="building-2"></i><b>Empresas</b><p>Acciones de RSE con beneficios fiscales y recibo oficial.</p></a>
+      <a href="sumate.html#voluntariado" class="uso"><i data-lucide="heart-handshake"></i><b>Voluntariado</b><p>Regalá tu tiempo: compañía, talleres, paseos y celebraciones.</p></a>
     </div>
-
-    <!-- Canal ético -->
-    <div class="caja dos rv" id="canal-etico" style="margin-top:2.5rem;align-items:start;border:1px solid var(--linea)">
-      <div>
-        <div class="ico" style="margin-bottom:1.2rem"><i data-lucide="shield-check"></i></div>
-        <h3 class="grande">Canal ético y transparencia institucional</h3>
-        <p style="color:var(--gris)">Reafirmamos nuestro compromiso irrestricto con el buen trato, la integridad y la defensa de los derechos de nuestros residentes y trabajadores. Ponemos a disposición un canal confidencial para comunicar cualquier situación irregular, sugerencia de mejora o vulneración de derechos, garantizando su tratamiento reservado, serio y objetivo por parte de la Dirección Congregacional.</p>
-        <div class="botones" style="margin-top:1.5rem">
-          <!-- Sustituir # por el enlace a los vídeos y al PDF del Código Ético -->
-          <a href="#" class="btn btn-line"><i data-lucide="circle-play"></i> Vídeos del Código Ético</a>
-          <a href="#" class="btn btn-line"><i data-lucide="file-down"></i> Descargar PDF</a>
-        </div>
-      </div>
-      <form id="formEtico">
-        <label class="check"><input type="checkbox" id="anonimo"> <i data-lucide="eye-off"></i> Enviar de forma anónima</label>
-        <div class="fila" id="datosEtico">
-          <div><label for="eNombre">Nombre</label><div class="campo"><i data-lucide="user"></i><input id="eNombre"></div></div>
-          <div><label for="eCorreo">Correo</label><div class="campo"><i data-lucide="mail"></i><input id="eCorreo" type="email"></div></div>
-        </div>
-        <div><label for="eTipo">Tipo de comunicación</label><div class="campo"><i data-lucide="list"></i><select id="eTipo"><option>Situación irregular</option><option>Vulneración de derechos</option><option>Sugerencia de mejora</option><option>Otro</option></select></div></div>
-        <div><label for="eMensaje">Mensaje</label><textarea id="eMensaje" required></textarea></div>
-        <button class="btn btn-1" type="submit" style="justify-self:start"><i data-lucide="send"></i> Enviar comunicación</button>
-        <p class="nota"><i data-lucide="lock"></i> Tratamiento reservado por la Dirección Congregacional.</p>
-      </form>
-    </div>
+    <div class="centro-btn"><a href="sumate.html" class="btn btn-2"><i data-lucide="hand-heart"></i> Quiero colaborar</a></div>
   </div>
 </section>
 
-<!-- ================= SECCIÓN ESPECIAL: SALÓN ================= -->
-<section class="salon" id="salon">
-  <div class="c dos">
-    <div class="rv izq">
-      <span class="chip"><i><i data-lucide="party-popper"></i></i>Sección especial</span>
-      <h2>Alquilá nuestro salón para <span class="acento" style="background:linear-gradient(90deg,#93D1E1,#fff);-webkit-background-clip:text;background-clip:text">grandes eventos</span></h2>
-      <p style="margin-top:1rem">Un espacio amplio y accesible en un entorno verde y sereno, ideal para celebraciones, encuentros institucionales y jornadas. Con tu evento también colaborás con el sostenimiento de nuestra obra.</p>
-      <a href="mailto:cottolengoriocuarto@consolacion.org?subject=Consulta%20alquiler%20de%20sal%C3%B3n" class="btn btn-2"><i data-lucide="calendar-days"></i> Consultar disponibilidad</a>
-    </div>
-    <div class="usos rv der">
-      <div class="uso"><i data-lucide="cake"></i><b>Celebraciones familiares</b></div>
-      <div class="uso"><i data-lucide="briefcase"></i><b>Eventos empresariales</b></div>
-      <div class="uso"><i data-lucide="presentation"></i><b>Jornadas y capacitaciones</b></div>
-      <div class="uso"><i data-lucide="users"></i><b>Encuentros institucionales</b></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 9. CONTACTO ================= -->
+<!-- ================= CONTACTO / ADMISIONES ================= -->
 <section id="contacto">
-  <div class="c">
-    <div class="cab-sec centro rv">
+  <div class="c dos" style="align-items:start">
+    <div class="caja rv izq" style="border:1px solid var(--linea)">
+      <div class="ico" style="margin-bottom:1.2rem"><i data-lucide="door-open"></i></div>
+      <h3 class="grande">¿Buscás un lugar para un familiar?</h3>
+      <p style="color:var(--gris)">La admisión la evalúa nuestro Equipo Técnico Interdisciplinario junto a la Dirección, priorizando la vulnerabilidad social y que podamos dar los apoyos que la persona necesita. Escribinos y te orientamos sin compromiso.</p>
+      <div class="botones" style="margin-top:1.5rem">
+        <a href="contacto.html?motivo=Admisiones" class="btn btn-1"><i data-lucide="send"></i> Consultar por un ingreso</a>
+        <a href="admisiones.html#admisiones" class="btn btn-line">Cómo es el proceso</a>
+      </div>
+    </div>
+    <div class="rv der">
       <span class="chip"><i><i data-lucide="mail"></i></i>Contacto</span>
       <h2>Te <span class="acento">esperamos</span></h2>
-    </div>
-    <div class="dos" style="align-items:start">
-      <div class="rv izq">
-        <div class="dato"><div class="ico sm"><i data-lucide="map-pin"></i></div><div><strong>Dirección</strong><span>Padre Silvi 160, Río Cuarto (CP X5800), Córdoba, Argentina</span></div></div>
-        <div class="dato"><div class="ico sm"><i data-lucide="phone"></i></div><div><strong>Teléfono / WhatsApp</strong><a href="tel:+549358XXXXXXX">+54 9 358 XXXXXXX</a></div></div>
-        <div class="dato"><div class="ico sm"><i data-lucide="mail"></i></div><div><strong>Correo general</strong><a href="mailto:cottolengoriocuarto@consolacion.org">cottolengoriocuarto@consolacion.org</a></div></div>
-        <div class="mapa"><iframe title="Ubicación del Pequeño Cottolengo Don Orione" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Padre+Silvi+160,+R%C3%ADo+Cuarto,+C%C3%B3rdoba,+Argentina&output=embed"></iframe></div>
-      </div>
-      <div class="caja rv der">
-        <h3 class="grande">Escribinos</h3>
-        <form id="formContacto">
-          <div class="fila">
-            <div><label for="cNombre">Nombre</label><div class="campo"><i data-lucide="user"></i><input id="cNombre" required></div></div>
-            <div><label for="cCorreo">Correo</label><div class="campo"><i data-lucide="mail"></i><input id="cCorreo" type="email" required></div></div>
-          </div>
-          <div><label for="cMotivo">Motivo</label><div class="campo"><i data-lucide="list"></i><select id="cMotivo"><option>Consulta general</option><option>Padrinos y Madrinas</option><option>Donaciones</option><option>Voluntariado</option><option>Empresas / RSE</option><option>Admisiones</option><option>Alquiler de salón</option></select></div></div>
-          <div><label for="cMensaje">Mensaje</label><textarea id="cMensaje" required></textarea></div>
-          <button class="btn btn-1" type="submit" style="justify-self:start"><i data-lucide="send"></i> Enviar mensaje</button>
-        </form>
-      </div>
+      <div class="dato"><div class="ico sm"><i data-lucide="map-pin"></i></div><div><strong>Dirección</strong><span>Padre Silvi 160, Río Cuarto (CP X5800), Córdoba, Argentina</span></div></div>
+      <div class="dato"><div class="ico sm"><i data-lucide="phone"></i></div><div><strong>Teléfono / WhatsApp</strong><a href="tel:+549358XXXXXXX">+54 9 358 XXXXXXX</a></div></div>
+      <div class="dato"><div class="ico sm"><i data-lucide="mail"></i></div><div><strong>Correo general</strong><a href="mailto:cottolengoriocuarto@consolacion.org">cottolengoriocuarto@consolacion.org</a></div></div>
+      <a href="contacto.html" class="btn btn-line" style="margin-top:.5rem"><i data-lucide="map"></i> Ver mapa y formulario</a>
     </div>
   </div>
 </section>
+
 
 </main>
 
@@ -967,15 +186,15 @@ footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
     </div>
     <div>
       <h4>La obra</h4>
-      <ul><li><a href="#quienes-somos"><i data-lucide="chevron-right"></i>Quiénes somos</a></li><li><a href="#residentes"><i data-lucide="chevron-right"></i>Residentes</a></li><li><a href="#equipo"><i data-lucide="chevron-right"></i>Equipo</a></li><li><a href="#servicios"><i data-lucide="chevron-right"></i>Servicios</a></li><li><a href="#instalaciones"><i data-lucide="chevron-right"></i>Instalaciones</a></li></ul>
+      <ul><li><a href="quienes-somos.html"><i data-lucide="chevron-right"></i>Quiénes somos</a></li><li><a href="quienes-somos.html#equipo"><i data-lucide="chevron-right"></i>Equipo</a></li><li><a href="servicios.html"><i data-lucide="chevron-right"></i>Servicios y actividades</a></li><li><a href="instalaciones.html"><i data-lucide="chevron-right"></i>Instalaciones</a></li><li><a href="instalaciones.html#salon"><i data-lucide="chevron-right"></i>Alquiler del salón</a></li></ul>
     </div>
     <div>
       <h4>Participá</h4>
-      <ul><li><a href="#sumate" data-abrir="padrinos"><i data-lucide="chevron-right"></i>Padrinos y Madrinas</a></li><li><a href="#sumate" data-abrir="empresas"><i data-lucide="chevron-right"></i>Empresas</a></li><li><a href="#sumate" data-abrir="voluntariado"><i data-lucide="chevron-right"></i>Voluntariado</a></li><li><a href="#trabaja"><i data-lucide="chevron-right"></i>Trabajá con nosotros</a></li><li><a href="#canal-etico"><i data-lucide="chevron-right"></i>Canal ético</a></li></ul>
+      <ul><li><a href="sumate.html#padrinos"><i data-lucide="chevron-right"></i>Padrinos y Madrinas</a></li><li><a href="sumate.html#empresas"><i data-lucide="chevron-right"></i>Empresas</a></li><li><a href="sumate.html#voluntariado"><i data-lucide="chevron-right"></i>Voluntariado</a></li><li><a href="admisiones.html#admisiones"><i data-lucide="chevron-right"></i>Solicitud de ingreso</a></li><li><a href="admisiones.html#trabaja"><i data-lucide="chevron-right"></i>Trabajá con nosotros</a></li><li><a href="admisiones.html#canal-etico"><i data-lucide="chevron-right"></i>Canal ético</a></li></ul>
     </div>
     <div>
       <h4>Congregación</h4>
-      <ul><li><a href="https://www.consolacion.org/" target="_blank" rel="noopener"><i data-lucide="globe"></i>consolacion.org</a></li><li><a href="https://www.residenciasconsolacion.org/" target="_blank" rel="noopener"><i data-lucide="building-2"></i>residenciasconsolacion.org</a></li><li><a href="#contacto"><i data-lucide="map-pin"></i>Padre Silvi 160, Río Cuarto</a></li></ul>
+      <ul><li><a href="https://www.consolacion.org/" target="_blank" rel="noopener"><i data-lucide="globe"></i>consolacion.org</a></li><li><a href="https://www.residenciasconsolacion.org/" target="_blank" rel="noopener"><i data-lucide="building-2"></i>residenciasconsolacion.org</a></li><li><a href="contacto.html"><i data-lucide="map-pin"></i>Padre Silvi 160, Río Cuarto</a></li></ul>
     </div>
   </div>
   <div class="c pie-final">© <span id="anio"></span> Pequeño Cottolengo Don Orione · Hermanas de Nuestra Señora de la Consolación · Río Cuarto</div>
@@ -987,92 +206,6 @@ footer a [data-lucide]{transition:transform .3s;color:var(--celeste)}
 <div class="toast" id="toast" role="status"><i data-lucide="circle-check"></i><span></span></div>
 
 <script src="js/lucide.min.js"></script>
-<script>
-(function(){
-  const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-  const CORREO='cottolengoriocuarto@consolacion.org', CORREO_DIR='direccion.cottolengoriocuarto@consolacion.org';
-
-  // Iconos
-  if(window.lucide) lucide.createIcons();
-
-  // Preloader
-  const quitarPre=()=>$('#preloader').classList.add('fuera');
-  addEventListener('load',()=>setTimeout(quitarPre,400)); setTimeout(quitarPre,3000);
-
-  $('#anio').textContent=new Date().getFullYear();
-
-  // Scroll: cabecera, progreso, botón arriba
-  const cab=$('#cab'), arriba=$('#arriba'), prog=$('#progreso');
-  function alScroll(){
-    const h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
-    prog.style.width=p+'%'; cab.classList.toggle('scrolled',scrollY>40); arriba.classList.toggle('ver',scrollY>700);
-  }
-  addEventListener('scroll',alScroll,{passive:true}); alScroll();
-  arriba.onclick=()=>scrollTo({top:0,behavior:'smooth'});
-
-  // Menú móvil
-  const hamb=$('#hamb'), menu=$('#menu'), velo=$('#velo');
-  function menuToggle(f){const a=menu.classList.toggle('abierto',f);hamb.classList.toggle('abierto',a);velo.classList.toggle('ver',a);hamb.setAttribute('aria-expanded',a)}
-  hamb.onclick=()=>menuToggle(); velo.onclick=()=>menuToggle(false);
-  $$('#menu a').forEach(a=>a.addEventListener('click',()=>menuToggle(false)));
-
-  // Banner deslizante
-  const slides=[...$$('.slide')], puntos=$('#puntos'), banner=$('.banner'); let act=0, timer;
-  slides.forEach((_,i)=>{const b=document.createElement('button');b.className='punto'+(i?'':' activo');b.setAttribute('aria-label','Diapositiva '+(i+1));b.innerHTML='<span></span>';b.onclick=()=>ir(i);puntos.appendChild(b)});
-  const dots=[...puntos.children];
-  function ir(n){
-    slides[act].classList.remove('activo');dots[act].classList.remove('activo');
-    act=(n+slides.length)%slides.length;
-    slides[act].classList.add('activo');void dots[act].offsetWidth;dots[act].classList.add('activo');
-    banner.classList.toggle('imagen-limpia',slides[act].classList.contains('sin-capa'));
-    reiniciar();
-  }
-  function reiniciar(){clearInterval(timer);timer=setInterval(()=>{if(!banner.classList.contains('pausa'))ir(act+1)},7000)}
-  $('#sig').onclick=()=>ir(act+1); $('#ant').onclick=()=>ir(act-1);
-  banner.addEventListener('mouseenter',()=>banner.classList.add('pausa'));
-  banner.addEventListener('mouseleave',()=>banner.classList.remove('pausa'));
-  let x0=null; banner.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
-  banner.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)ir(act+(dx<0?1:-1));x0=null});
-  banner.classList.toggle('imagen-limpia',slides[0].classList.contains('sin-capa'));
-  reiniciar();
-
-  // Revelar al hacer scroll
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('ver');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -50px 0px'});
-  $$('.rv').forEach(el=>io.observe(el));
-
-  // Contadores
-  const ioC=new IntersectionObserver(es=>es.forEach(e=>{
-    if(!e.isIntersecting)return; const el=e.target,fin=parseFloat(el.dataset.fin),dec=+el.dataset.dec||0,t0=performance.now(),dur=2000;
-    (function paso(t){const p=Math.min((t-t0)/dur,1),v=fin*(1-Math.pow(1-p,4));el.textContent=v.toFixed(dec).replace('.',',');if(p<1)requestAnimationFrame(paso)})(t0);
-    ioC.unobserve(el);
-  }),{threshold:.6});
-  $$('.cont').forEach(el=>ioC.observe(el));
-
-  // Menú activo según sección
-  const enlaces=[...$$('#menu a[href^="#"]')];
-  const ioS=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)enlaces.forEach(a=>a.classList.toggle('activo',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-  $$('main section[id]').forEach(s=>ioS.observe(s));
-
-  // Pestañas
-  function abrir(id){$$('.tab').forEach(b=>b.classList.toggle('activa',b.dataset.panel===id));$$('.panel').forEach(p=>p.classList.toggle('activo',p.id===id))}
-  $$('.tab').forEach(b=>b.onclick=()=>abrir(b.dataset.panel));
-  $$('[data-abrir]').forEach(a=>a.addEventListener('click',()=>abrir(a.dataset.abrir)));
-
-  // Toast
-  let tt; function aviso(m){const t=$('#toast');t.querySelector('span').textContent=m;t.classList.add('ver');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('ver'),2800)}
-
-  // Copiar alias
-  $$('[data-copiar]').forEach(b=>b.onclick=()=>{const v=b.dataset.copiar;(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>aviso('Alias copiado: '+v)).catch(()=>aviso('Alias: '+v))});
-
-  // Visita virtual (sustituir cuando esté el vídeo)
-  $('#btnVisita').onclick=()=>aviso('La visita virtual estará disponible muy pronto.');
-
-  // Formularios → abren el correo del visitante
-  const mailto=(d,a,c)=>location.href='mailto:'+d+'?subject='+encodeURIComponent(a)+'&body='+encodeURIComponent(c);
-  $('#formContacto').onsubmit=e=>{e.preventDefault();mailto(CORREO,'Web – '+$('#cMotivo').value,'Nombre: '+$('#cNombre').value+'\nCorreo: '+$('#cCorreo').value+'\n\n'+$('#cMensaje').value);aviso('Abriendo tu correo para enviar el mensaje…')};
-  const anon=$('#anonimo'); anon.onchange=()=>$('#datosEtico').style.display=anon.checked?'none':'';
-  $('#formEtico').onsubmit=e=>{e.preventDefault();const q=anon.checked?'Comunicación ANÓNIMA':'Nombre: '+$('#eNombre').value+'\nCorreo: '+$('#eCorreo').value;mailto(CORREO_DIR,'Canal Ético – '+$('#eTipo').value,q+'\n\n'+$('#eMensaje').value);aviso('Abriendo tu correo para enviar la comunicación…')};
-})();
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
