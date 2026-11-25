@@ -616,3 +616,7 @@ footer a [data-lucide]{color:var(--celeste)}
 @keyframes kenburns-pag{to{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.cab-pag .fondo-pag{transform:none}}
 .cab-pag h1.titulo-xl{font-size:clamp(3.2rem,9vw,6.2rem);line-height:1}
+.dato .cita,.accion .tx > .cita{display:inline-flex;align-items:center;gap:.35rem;margin-top:.35rem;padding:.15rem .6rem;border-radius:20px;background:#FFF3D6;color:#7A5300;font-size:.78rem;font-weight:700}
+.dato .cita [data-lucide]{width:14px;height:14px}
+.accion .tx > .cita{display:inline-block}
+.dato .cita{display:flex;width:max-content;max-width:100%}
