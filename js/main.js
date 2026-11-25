@@ -75,3 +75,18 @@
     fE.onsubmit=e=>{e.preventDefault();const q=anon.checked?'Comunicación ANÓNIMA':'Nombre: '+$('#eNombre').value+'\nCorreo: '+$('#eCorreo').value;mailto(CORREO_DIR,'Canal Ético – '+$('#eTipo').value,q+'\n\n'+$('#eMensaje').value);aviso('Abriendo tu correo para enviar la comunicación…')};
   }
 })();
+
+// Visor de fotos de la galería
+(function(){
+  const dlg=document.getElementById('visorFoto'); if(!dlg||!dlg.showModal) return;
+  const enlaces=[...document.querySelectorAll('[data-galeria]')]; let i=0, origen=null;
+  const img=dlg.querySelector('img'), cap=dlg.querySelector('figcaption');
+  function mostrar(n){i=(n+enlaces.length)%enlaces.length;const a=enlaces[i],m=a.querySelector('img');img.src=a.href;img.alt=m.alt;cap.textContent=m.alt+' ('+(i+1)+' de '+enlaces.length+')'}
+  enlaces.forEach((a,n)=>a.addEventListener('click',e=>{e.preventDefault();origen=a;mostrar(n);dlg.showModal()}));
+  dlg.querySelector('.vf-cerrar').onclick=()=>dlg.close();
+  dlg.querySelector('.vf-ant').onclick=()=>mostrar(i-1);
+  dlg.querySelector('.vf-sig').onclick=()=>mostrar(i+1);
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  dlg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')mostrar(i-1);if(e.key==='ArrowRight')mostrar(i+1)});
+  dlg.addEventListener('close',()=>{if(origen)origen.focus()});
+})();

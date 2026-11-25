@@ -33,7 +33,7 @@
   <nav class="c nav" aria-label="Menú principal">
     <a href="index.html" class="marca" aria-label="Inicio">
       <img src="img/logo.png" alt="Consolación">
-      <span><b>Pequeño Cottolengo Don Orione</b>Río Cuarto · Córdoba</span>
+      <span class="nombre"><b>Pequeño Cottolengo</b><small>Don Orione · Río Cuarto</small></span>
     </a>
     <button class="hamb" id="hamb" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
@@ -51,7 +51,8 @@
 
 <main id="contenido">
 
-<section class="cab-pag">
+<section class="cab-pag con-foto">
+  <div class="fondo-pag" style="background-image:url(img/fotos/jardin-vista.jpg)" aria-hidden="true"></div>
   <div class="burbuja"></div>
   <div class="c">
     <div class="migas"><a href="index.html">Inicio</a><i data-lucide="chevron-right"></i>Instalaciones</div>
@@ -70,7 +71,7 @@
     </div>
     <!-- Para insertar el vídeo o recorrido 360°: reemplazar el contenido de .visor por el <iframe> -->
     <div class="visor rv zoom">
-      <img src="img/parque.svg" alt="">
+      <img src="img/fotos/jardin-vista.jpg" alt="" loading="lazy" width="1600" height="900">
       <div class="capa">
         <button class="play" id="btnVisita" aria-label="Reproducir visita virtual"><i data-lucide="play"></i></button>
         <h3>Recorré nuestra casa por dentro — Visita Virtual</h3>
@@ -87,6 +88,38 @@
     </div>
   </div>
 </section>
+
+<!-- ================= GALERÍA ================= -->
+<section id="galeria" aria-labelledby="titulo-galeria">
+  <div class="c">
+    <div class="cab-sec centro rv">
+      <span class="chip"><i><i data-lucide="images" aria-hidden="true"></i></i>Galería</span>
+      <h2 id="titulo-galeria">Recorré <span class="acento">nuestra casa</span></h2>
+      <p class="lead">Tocá cualquier foto para verla en grande.</p>
+    </div>
+    <ul class="galeria">
+      <li class="ancha"><a href="img/fotos/jardin-arriba.jpg" data-galeria><img src="img/fotos/jardin-arriba.jpg" alt="El parque arbolado visto desde los pabellones" loading="lazy" width="1200" height="900"></a></li>
+      <li class="alta"><a href="img/fotos/pasillo.jpg" data-galeria><img src="img/fotos/pasillo.jpg" alt="Galería interior luminosa con plantas" loading="lazy" width="900" height="1600"></a></li>
+      <li><a href="img/fotos/sala-estar.jpg" data-galeria><img src="img/fotos/sala-estar.jpg" alt="Sala de estar con sillones y flores" loading="lazy" width="1200" height="900"></a></li>
+      <li><a href="img/fotos/comedor.jpg" data-galeria><img src="img/fotos/comedor.jpg" alt="Comedor con mesa larga y ventanales" loading="lazy" width="1200" height="900"></a></li>
+      <li><a href="img/fotos/capilla-interior.jpg" data-galeria><img src="img/fotos/capilla-interior.jpg" alt="Interior de la capilla durante una celebración" loading="lazy" width="1200" height="900"></a></li>
+      <li><a href="img/fotos/capilla-exterior.jpg" data-galeria><img src="img/fotos/capilla-exterior.jpg" alt="Fachada de la capilla con detalles azules" loading="lazy" width="1200" height="900"></a></li>
+      <li class="alta"><a href="img/fotos/pasillo-plantas.jpg" data-galeria><img src="img/fotos/pasillo-plantas.jpg" alt="Pasillo de los pabellones decorado con plantas" loading="lazy" width="900" height="1200"></a></li>
+      <li><a href="img/fotos/sala-comedor.jpg" data-galeria><img src="img/fotos/sala-comedor.jpg" alt="Sala comedor con sillones y mesas" loading="lazy" width="1200" height="900"></a></li>
+      <li class="ancha"><a href="img/fotos/camino.jpg" data-galeria><img src="img/fotos/camino.jpg" alt="Camino arbolado dentro del predio" loading="lazy" width="1200" height="900"></a></li>
+      <li><a href="img/fotos/jardin-arboles.jpg" data-galeria><img src="img/fotos/jardin-arboles.jpg" alt="Jardín con árboles y senderos" loading="lazy" width="1200" height="900"></a></li>
+      <li><a href="img/fotos/pabellon.jpg" data-galeria><img src="img/fotos/pabellon.jpg" alt="Pabellón de dos plantas rodeado de césped" loading="lazy" width="1200" height="900"></a></li>
+      <li><a href="img/fotos/pabellones.jpg" data-galeria><img src="img/fotos/pabellones.jpg" alt="Pabellones del hogar al atardecer" loading="lazy" width="1200" height="900"></a></li>
+    </ul>
+  </div>
+</section>
+
+<dialog class="visor-foto" id="visorFoto" aria-label="Foto ampliada">
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button type="button" class="vf-cerrar" aria-label="Cerrar"><i data-lucide="x" aria-hidden="true"></i></button>
+  <button type="button" class="vf-ant" aria-label="Foto anterior"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+  <button type="button" class="vf-sig" aria-label="Foto siguiente"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+</dialog>
 
 <!-- ================= SECCIÓN ESPECIAL: SALÓN ================= -->
 <section class="salon" id="salon">

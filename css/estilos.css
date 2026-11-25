@@ -15,7 +15,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:hidden}
 body{font-family:var(--sans);color:var(--texto);background:#fff;line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
+img{max-width:100%;display:block;height:auto}
 a{color:var(--azul);text-decoration:none;transition:color .3s}
 a:hover{color:var(--azul-osc)}
 .c{width:min(1200px,92%);margin-inline:auto}
@@ -198,7 +198,7 @@ header.cab.scrolled{box-shadow:0 10px 30px -12px rgba(0,40,70,.25)}
 .hito strong{color:var(--noche)}
 
 /* Cita parallax */
-.cita-par{background:linear-gradient(rgba(6,34,58,.86),rgba(6,34,58,.86)),url(../img/banner-2.svg) center/cover fixed;color:#fff;text-align:center}
+.cita-par{background:linear-gradient(rgba(6,34,58,.86),rgba(6,34,58,.86)),url(../img/fotos/capilla-fondo.jpg) center/cover fixed;color:#fff;text-align:center}
 .cita-par blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.35;max-width:950px;margin:0 auto}
 .cita-par .comillas{font-size:3.5rem;color:var(--celeste);margin-bottom:.5rem;display:inline-block}
 .cita-par cite{display:block;font-style:normal;font-family:var(--sans);font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;color:var(--celeste);margin-top:1.5rem}
@@ -516,3 +516,102 @@ footer a [data-lucide]{color:var(--celeste)}
 .redes a[aria-label="Instagram"]:hover{color:#C13584}
 .redes a[aria-label="Facebook"]:hover{color:#1877F2}
 .redes a[aria-label="Correo"]:hover{color:var(--azul)}
+
+/* =========================================================
+   GALERÍA Y VISOR DE FOTOS
+   ========================================================= */
+.galeria{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:.9rem}
+.galeria li.ancha{grid-column:span 2}
+.galeria li.alta{grid-row:span 2}
+.galeria a{display:block;height:100%;border-radius:18px;overflow:hidden;box-shadow:var(--sombra)}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.galeria a:hover img,.galeria a:focus-visible img{transform:scale(1.06)}
+@media (max-width:900px){.galeria{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}}
+@media (max-width:600px){.galeria{gap:.6rem;grid-auto-rows:140px}}
+.visor-foto{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);max-height:92vh;overflow:visible;margin:auto}
+.visor-foto::backdrop{background:rgba(6,34,58,.92)}
+.visor-foto figure{margin:0}
+.visor-foto img{max-width:100%;max-height:82vh;border-radius:14px;margin:auto}
+.visor-foto figcaption{color:#fff;text-align:center;margin-top:.8rem;font-weight:600}
+.visor-foto button{position:absolute;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--noche);display:grid;place-items:center;cursor:pointer;font-size:1.4rem;box-shadow:var(--sombra-2)}
+.vf-cerrar{top:-18px;right:-18px}
+.vf-ant{left:-24px;top:45%}.vf-sig{right:-24px;top:45%}
+@media (max-width:600px){.vf-cerrar{top:-56px;right:0}.vf-ant{left:4px}.vf-sig{right:4px}}
+.placa{margin:1.8rem 0 0;max-width:260px}
+.placa img{border-radius:16px;box-shadow:var(--sombra)}
+.placa figcaption{font-size:.85rem;color:var(--gris);margin-top:.5rem}
+
+/* =========================================================
+   PORTADA: CIFRAS (diseño cuidado)
+   ========================================================= */
+.mini-cifras .cifra{flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;gap:1rem;padding:1.3rem 1.4rem;background:#fff;border:1px solid var(--linea);border-radius:22px;box-shadow:0 18px 40px -18px rgba(0,68,111,.35);position:relative;overflow:hidden}
+.mini-cifras .cifra::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--azul)}
+.mini-cifras .ic{flex:none;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:var(--hielo);color:var(--azul);transition:background .4s,color .4s,transform .5s var(--ease)}
+.mini-cifras .ic [data-lucide]{width:26px;height:26px;stroke-width:1.8}
+.mini-cifras .cifra:hover .ic{background:var(--azul);color:#fff;transform:rotate(-6deg)}
+.mini-cifras .dat{display:flex;flex-direction:column;min-width:0}
+.mini-cifras .num{display:block;margin:0;font-size:clamp(1.7rem,2.6vw,2.2rem);font-weight:800;line-height:1;color:var(--noche);letter-spacing:-.03em;white-space:nowrap}
+.mini-cifras .num small{font-size:.5em;font-weight:700;color:var(--azul);margin-left:.15em;letter-spacing:0}
+.mini-cifras .lbl{display:block;margin-top:.35rem;font-size:.82rem;font-weight:600;line-height:1.3;color:var(--gris)}
+@media (max-width:1240px) and (min-width:601px){.mini-cifras .cifra{padding:1.1rem}}
+@media (max-width:600px){
+  .mini-cifras .cifra{flex-direction:column;align-items:flex-start;gap:.7rem;padding:1rem 1rem 1.1rem 1.2rem}
+  .mini-cifras .ic{width:42px;height:42px;border-radius:12px}
+  .mini-cifras .ic [data-lucide]{width:21px;height:21px}
+  .mini-cifras .num{font-size:1.6rem}
+  .mini-cifras .lbl{font-size:.78rem}
+}
+
+/* =========================================================
+   PORTADA: CONTACTO RÁPIDO
+   ========================================================= */
+.accion{display:flex;align-items:center;gap:1rem;height:100%;padding:1.2rem 1.3rem;border-radius:20px;background:#fff;border:1px solid var(--linea);box-shadow:var(--sombra);color:var(--texto);transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.accion:hover{transform:translateY(-4px);box-shadow:var(--sombra-2);border-color:transparent;color:var(--texto)}
+.accion .ic{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--azul)}
+.accion .ic [data-lucide],.accion .ic svg{width:24px;height:24px}
+.accion.wa .ic{background:#128C7E}
+.accion.mapa-ac .ic{background:var(--noche)}
+.accion .tx{flex:1;min-width:0}
+.accion strong{display:block;color:var(--noche);font-size:1rem}
+.accion .tx > span{display:block;color:#4A5B6A;font-size:.92rem}
+.accion .fl{flex:none;width:20px;height:20px;color:var(--azul);transition:transform .35s var(--ease)}
+.accion:hover .fl{transform:translateX(4px)}
+.banda .btn-glass{background:transparent;border:2px solid #fff;backdrop-filter:none;-webkit-backdrop-filter:none}
+.banda .btn-glass:hover{background:#fff;color:var(--azul)}
+.rapido{padding:3rem 0 7rem}
+
+/* =========================================================
+   CABECERA: marca y menú más limpios
+   ========================================================= */
+.marca{gap:.75rem}
+.marca img{height:44px}
+.marca .nombre{display:flex;flex-direction:column;border:0;padding:0;line-height:1.15;white-space:nowrap}
+.marca .nombre b{font-size:1rem;font-weight:800;color:var(--noche);letter-spacing:-.01em}
+.marca .nombre small{font-size:.74rem;font-weight:600;color:var(--azul);letter-spacing:.04em;text-transform:uppercase;margin-top:.15rem}
+.scrolled .marca img{height:36px}
+@media (min-width:1241px){
+  .menu{gap:.1rem}
+  .menu a:not(.btn){position:relative;background:none;border-radius:0;padding:.6rem .75rem;font-size:.9rem;color:var(--texto)}
+  .menu a:not(.btn)::after{content:"";position:absolute;left:.75rem;right:.75rem;bottom:.25rem;height:2px;border-radius:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .menu a:not(.btn):hover{background:none;color:var(--azul)}
+  .menu a:not(.btn):hover::after,.menu a.activo::after{transform:scaleX(1)}
+  .menu a.activo{background:none;color:var(--azul)}
+  .menu .btn{margin-left:.8rem}
+}
+/* El nombre se muestra siempre que haya espacio */
+@media (max-width:1400px){.marca .nombre{display:flex}}
+@media (min-width:1241px) and (max-width:1320px){.marca .nombre{display:none}}
+@media (max-width:900px){.marca .nombre{display:flex}}
+@media (max-width:600px){.marca{gap:.55rem}.marca img,.scrolled .marca img{height:34px}.marca .nombre b{font-size:.88rem}.marca .nombre small{font-size:.62rem;letter-spacing:.02em}}
+
+/* =========================================================
+   CABECERAS DE PÁGINA CON FOTO
+   ========================================================= */
+.cab-pag.con-foto{background:var(--noche);isolation:isolate;padding:clamp(4rem,8vw,6.5rem) 0 clamp(5.5rem,10vw,8rem)}
+.cab-pag .fondo-pag{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center 55%;transform:scale(1.06);animation:kenburns-pag 12s ease-out forwards}
+.cab-pag.con-foto::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(6,34,58,.7)}
+.cab-pag.con-foto .burbuja{display:none}
+.cab-pag.con-foto h1,.cab-pag.con-foto p,.cab-pag.con-foto .migas{text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.cab-pag.con-foto .ola{z-index:1}
+@keyframes kenburns-pag{to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.cab-pag .fondo-pag{transform:none}}

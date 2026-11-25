@@ -33,7 +33,7 @@
   <nav class="c nav" aria-label="Menú principal">
     <a href="index.html" class="marca" aria-label="Inicio">
       <img src="img/logo.png" alt="Consolación">
-      <span><b>Pequeño Cottolengo Don Orione</b>Río Cuarto · Córdoba</span>
+      <span class="nombre"><b>Pequeño Cottolengo</b><small>Don Orione · Río Cuarto</small></span>
     </a>
     <button class="hamb" id="hamb" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
@@ -51,7 +51,8 @@
 
 <main id="contenido">
 
-<section class="cab-pag">
+<section class="cab-pag con-foto">
+  <div class="fondo-pag" style="background-image:url(img/fotos/taller-paracaidas.jpg)" aria-hidden="true"></div>
   <div class="burbuja"></div>
   <div class="c">
     <div class="migas"><a href="index.html">Inicio</a><i data-lucide="chevron-right"></i>Servicios</div>
@@ -73,7 +74,7 @@
       </ul>
     </div>
     <div class="foto-wrap rv der orden">
-      <div class="foto"><img src="img/residentes.svg" alt="Residentes del hogar"></div>
+      <div class="foto"><img src="img/fotos/residentes.jpg" alt="Dos residentes en silla de ruedas tomados de la mano" loading="lazy" width="1000" height="750"></div>
       <div class="flotante" style="right:-20px;bottom:50px"><div class="ico sm"><i data-lucide="smile"></i></div><div>Autonomía y alegría<small>Planes individuales de atención</small></div></div>
     </div>
   </div>
@@ -108,18 +109,18 @@
       <p class="lead">Una vida plena necesita movimiento, creatividad, alegría y encuentro. Por eso desarrollamos un calendario semanal de actividades terapéuticas, recreativas y culturales.</p>
     </div>
     <div class="grid g4">
-      <article class="taller rv d1"><div class="img"><img src="img/taller-arte.svg" alt="Taller de arte"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="palette"></i></div><h3>Arte y Expresión Plástica</h3><p>Pintura, dibujo, cerámica y manualidades que estimulan la motricidad fina, la creatividad y la autoestima.</p></div></article>
-      <article class="taller rv d2"><div class="img"><img src="img/taller-huerta.svg" alt="Huerta terapéutica"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="sprout"></i></div><h3>Huerta Terapéutica y Jardinería</h3><p>Contacto con la tierra y el cuidado de plantas, promoviendo la responsabilidad y el disfrute sensorial.</p></div></article>
-      <article class="taller rv d3"><div class="img"><img src="img/taller-memoria.svg" alt="Estimulación cognitiva"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="puzzle"></i></div><h3>Estimulación Cognitiva y Memoria</h3><p>Juegos de mesa, lectura compartida, ejercicios de atención, lenguaje y reminiscencia guiados por profesionales.</p></div></article>
-      <article class="taller rv d4"><div class="img"><img src="img/taller-musica.svg" alt="Música y movimiento"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="music"></i></div><h3>Música, Canto y Movimiento</h3><p>Expresión corporal, ritmos y folclore que despiertan emociones positivas y fortalecen la socialización.</p></div></article>
+      <article class="taller rv d1"><div class="img"><img src="img/fotos/taller-arte.jpg" alt="Residente y acompañante pintando en una mesa del jardín" loading="lazy" width="900" height="675"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="palette"></i></div><h3>Arte y Expresión Plástica</h3><p>Pintura, dibujo, cerámica y manualidades que estimulan la motricidad fina, la creatividad y la autoestima.</p></div></article>
+      <article class="taller rv d2"><div class="img"><img src="img/fotos/huerta-plantas.jpg" alt="Plantas y macetas cuidadas en el parque" loading="lazy" width="800" height="1067"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="sprout"></i></div><h3>Huerta Terapéutica y Jardinería</h3><p>Contacto con la tierra y el cuidado de plantas, promoviendo la responsabilidad y el disfrute sensorial.</p></div></article>
+      <article class="taller rv d3"><div class="img"><img src="img/fotos/taller-juegos.jpg" alt="Profesional jugando a las cartas con residentes" loading="lazy" width="900" height="675"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="puzzle"></i></div><h3>Estimulación Cognitiva y Memoria</h3><p>Juegos de mesa, lectura compartida, ejercicios de atención, lenguaje y reminiscencia guiados por profesionales.</p></div></article>
+      <article class="taller rv d4"><div class="img"><img src="img/fotos/taller-paracaidas.jpg" alt="Residentes y equipo jugando con un paracaídas de colores" loading="lazy" width="1000" height="750"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="music"></i></div><h3>Música, Canto y Movimiento</h3><p>Expresión corporal, ritmos y folclore que despiertan emociones positivas y fortalecen la socialización.</p></div></article>
     </div>
 
     <h3 class="subt rv">Recreación, comunidad y vida espiritual</h3>
     <div class="grid g4">
-      <div class="tarjeta mini rv d1" style="flex-direction:column"><div class="ico claro"><i data-lucide="party-popper"></i></div><h3>Celebración de la Vida</h3><p>Cumpleaños mensuales, fechas patrias, peñas folclóricas y eventos especiales.</p></div>
-      <div class="tarjeta mini rv d2" style="flex-direction:column"><div class="ico claro"><i data-lucide="bus"></i></div><h3>Paseos y Excursiones</h3><p>Salidas a espacios culturales, parques y eventos de Río Cuarto con acompañamiento profesional y voluntario.</p></div>
-      <div class="tarjeta mini rv d3" style="flex-direction:column"><div class="ico claro"><i data-lucide="school"></i></div><h3>Encuentros Intergeneracionales</h3><p>Colegios, parroquias, grupos juveniles e instituciones comparten jornadas de juegos, música y amistad.</p></div>
-      <div class="tarjeta mini rv d4" style="flex-direction:column"><div class="ico claro"><i data-lucide="church"></i></div><h3>Celebraciones Litúrgicas</h3><p>Misas en nuestra Capilla, adoración, Rosario y fiestas de San Luis Orione y Santa María Rosa Molas.</p></div>
+      <article class="taller rv d1"><div class="img"><img src="img/fotos/celebracion.jpg" alt="Residentes y equipo reunidos en la sala, con el cartel de cumpleaños al fondo" loading="lazy" width="900" height="675"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="party-popper"></i></div><h3>Celebración de la Vida</h3><p>Cumpleaños mensuales, fechas patrias, peñas folclóricas y eventos especiales.</p></div></article>
+      <article class="taller rv d2"><div class="img"><img src="img/fotos/paseo-jardin.jpg" alt="Residente y acompañante compartiendo una merienda en una mesa del parque" loading="lazy" width="900" height="675"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="bus"></i></div><h3>Paseos y Excursiones</h3><p>Salidas a espacios culturales, parques y eventos de Río Cuarto con acompañamiento profesional y voluntario.</p></div></article>
+      <article class="taller rv d3"><div class="img"><img src="img/fotos/encuentro.jpg" alt="Gran ronda de residentes y visitantes escuchando una lectura en la sala" loading="lazy" width="900" height="675"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="school"></i></div><h3>Encuentros Intergeneracionales</h3><p>Colegios, parroquias, grupos juveniles e instituciones comparten jornadas de juegos, música y amistad.</p></div></article>
+      <article class="taller rv d4"><div class="img"><img src="img/fotos/misa.jpg" alt="Misa en la capilla del hogar con la comunidad reunida" loading="lazy" width="900" height="675"></div><div class="cuerpo"><div class="ico sm"><i data-lucide="church"></i></div><h3>Celebraciones Litúrgicas</h3><p>Misas en nuestra Capilla, adoración, Rosario y fiestas de San Luis Orione y Santa María Rosa Molas.</p></div></article>
     </div>
   </div>
 </section>
