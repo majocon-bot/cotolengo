@@ -452,9 +452,9 @@ a.uso p{color:#d6eaf3;font-size:.9rem;margin:.4rem 0 0}
 .mosaico{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .losa{position:relative;display:block;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;color:#fff;box-shadow:var(--sombra);isolation:isolate}
 .losa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s var(--ease)}
-.losa::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 45%,rgba(6,34,58,.88) 45%)}
+.losa::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 64%,rgba(6,34,58,.9) 64%)}
 .losa:hover img,.losa:focus-visible img{transform:scale(1.07)}
-.losa:hover::after{background:linear-gradient(180deg,rgba(6,34,58,.25) 45%,rgba(0,68,111,.95) 45%)}
+.losa:hover::after{background:linear-gradient(180deg,rgba(6,34,58,.15) 64%,rgba(0,68,111,.95) 64%)}
 .losa .txt{position:absolute;left:1.3rem;right:3.6rem;bottom:1rem;font-size:clamp(1.15rem,1.8vw,1.4rem);font-weight:800;line-height:1.2;color:#fff}
 .losa .txt small{display:block;font-size:.8rem;font-weight:600;color:var(--celeste-2);margin-bottom:.25rem;letter-spacing:.02em}
 .losa > [data-lucide]{position:absolute;right:1.1rem;bottom:1.2rem;width:2.4rem;height:2.4rem;padding:.55rem;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);transition:background .3s,color .3s,transform .4s var(--ease)}
@@ -488,3 +488,31 @@ a.uso p{color:#d6eaf3;font-size:.9rem;margin:.4rem 0 0}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:6px}
 .banner :focus-visible,.banda :focus-visible,.cab-pag :focus-visible,.salon :focus-visible,footer :focus-visible,.topbar :focus-visible,.losa:focus-visible{outline-color:#fff;box-shadow:0 0 0 6px var(--noche)}
+
+/* Banner con foto real: velo más suave para que se vea la imagen */
+.banner.unico .slide .fondo.foto{background-position:center 60%}
+.banner.unico .slide::after{background:rgba(6,34,58,.25)}
+.banner.unico h1,.banner.unico p,.banner.unico .etq{text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.texto-hero{align-self:flex-start;max-width:640px;background:rgba(6,34,58,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);border-radius:28px;padding:clamp(1.5rem,3.5vw,2.6rem)}
+.texto-hero .anim:nth-child(2){animation-delay:.15s}.texto-hero .anim:nth-child(3){animation-delay:.3s}.texto-hero .anim:nth-child(4){animation-delay:.45s}
+.texto-hero p{margin:1rem 0 1.6rem}
+.banner.unico .slide .c{padding-bottom:5rem}
+@media (max-width:600px){.texto-hero{padding:1.3rem;border-radius:20px}}
+.losa .txt{bottom:.85rem}
+@media (max-width:600px){.losa::after{background:linear-gradient(180deg,transparent 52%,rgba(6,34,58,.9) 52%)}}
+
+/* =========================================================
+   PIE: redes con color propio y textos en blanco
+   ========================================================= */
+footer,footer p,footer a,.pie-final{color:#fff}
+footer a:hover{color:var(--celeste)}
+footer a [data-lucide]{color:var(--celeste)}
+.redes a{width:46px;height:46px;border-radius:50%;color:#fff;box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.redes a[aria-label="Instagram"]{background:#C13584}
+.redes a[aria-label="Facebook"]{background:#1877F2}
+.redes a[aria-label="Correo"]{background:var(--celeste);color:var(--noche)}
+.redes a [data-lucide]{color:inherit;width:20px;height:20px}
+.redes a:hover{background:#fff;transform:translateY(-4px)}
+.redes a[aria-label="Instagram"]:hover{color:#C13584}
+.redes a[aria-label="Facebook"]:hover{color:#1877F2}
+.redes a[aria-label="Correo"]:hover{color:var(--azul)}
