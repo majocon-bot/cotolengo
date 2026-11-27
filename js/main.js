@@ -90,3 +90,27 @@
   dlg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')mostrar(i-1);if(e.key==='ArrowRight')mostrar(i+1)});
   dlg.addEventListener('close',()=>{if(origen)origen.focus()});
 })();
+
+/* Carrusel de fotos de portada */
+(function(){
+  var cont=document.getElementById('heroFondos');
+  if(!cont) return;
+  var fotos=cont.querySelectorAll('.fondo'), ctrl=document.querySelector('.hero-ctrl');
+  var puntos=ctrl.querySelectorAll('.hp'), btn=ctrl.querySelector('.hp-pausa');
+  var i=0, t=null, parado=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ir(n){
+    fotos[i].classList.remove('ver'); puntos[i].classList.remove('activo'); puntos[i].removeAttribute('aria-current');
+    i=(n+fotos.length)%fotos.length;
+    void fotos[i].offsetWidth;
+    fotos[i].classList.add('ver'); puntos[i].classList.add('activo'); puntos[i].setAttribute('aria-current','true');
+  }
+  function arrancar(){ clearInterval(t); if(!parado) t=setInterval(function(){ ir(i+1); },6000); }
+  function estado(){
+    ctrl.classList.toggle('parado',parado);
+    btn.setAttribute('aria-label',parado?'Reanudar el pase de fotos':'Pausar el pase de fotos');
+  }
+  puntos.forEach(function(p,n){ p.addEventListener('click',function(){ ir(n); arrancar(); }); });
+  btn.addEventListener('click',function(){ parado=!parado; estado(); arrancar(); });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) clearInterval(t); else arrancar(); });
+  estado(); arrancar();
+})();
